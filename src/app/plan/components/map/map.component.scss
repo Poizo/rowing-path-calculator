@@ -1,11 +1,11 @@
 @mixin focusSVGElement {
-    outline:  8px solid var(--color-accent-dark);
-    outline-offset: 2px;
-    border-radius: 2rem;
+    // outline:  8px solid var(--color-accent-dark);
+    // outline-offset: 2px;
+    // border-radius: 2rem;
 }
 
 .map-container {
-    @apply pt-12 pb-8 h-screen;
+    @apply pt-12 pb-8 h-screen relative;
 
     svg {
         @apply h-full m-auto;
@@ -26,16 +26,19 @@
             fill: var(--color-bridge);
             stroke: var(--color-bridge);
             stroke-linejoin: round;
-            @apply cursor-pointer;
 
             transition-property: stroke-width;
             transition-duration: 250ms;
             transition-timing-function: ease-in-out;
 
-            &:hover, &:focus {
-                stroke-width: 2.5rem;
-                @include focusSVGElement;
+            &:not(.-unactive) {
+                @apply cursor-pointer;
+                &:hover, &:focus {
+                    stroke-width: 2.5rem;
+                    @include focusSVGElement;
+                }
             }
+
         }
 
         .building-pointer {
@@ -61,5 +64,33 @@
             }
         }
 
+        polygon,path {
+            &.pointer-shadow {
+                stroke: var(--color-accent-dark);
+                stroke-linejoin: round;
+                &.-visible {
+                    stroke-width: 2.5rem;
+                }
+            }
+        }
+
+        .pointer-shadow {
+            fill: transparent;
+
+            &.-visible {
+                fill:  var(--color-accent-dark);
+                opacity: 0.6;
+            }
+        }
+
     }
+}
+
+.pointer-info-tooltip {
+    @apply rounded bg-grey-00 p-4 shadow-md fixed z-10;
+}
+
+
+.map-overlay {
+    @apply z-10 fixed h-screen w-screen opacity-0;
 }
