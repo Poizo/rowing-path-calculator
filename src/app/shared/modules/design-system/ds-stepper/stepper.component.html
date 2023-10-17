@@ -1,0 +1,48 @@
+<div class="stepper">
+    <div class="stepper__container">
+        <!-- STEPS LIST INTO THE MENU -->
+        <div class="stepper__steps">
+            <ng-container *ngFor="let step of steps; let i = index">
+                <div class="stepper__step" [ngClass]="{
+                        'stepper__step--active': selectedIndex === i,
+                        'stepper__step--error': isWizard && !!step.stepControl && step.hasError && step.interacted && selectedIndex !== i,
+                        'stepper__step--validated': isWizard && !!step.stepControl && !step.hasError && step.interacted,
+                        'stepper__step--disabled': !couldClickOnStepforChange && selectedIndex !== i
+                    }" [attr.tabindex]="!couldClickOnStepforChange && selectedIndex !== i ? -1 : 0"
+                    (keydown.enter)="selectStepByIndex(i)"
+                    (click)="selectStepByIndex(i)">
+                    <ng-container *ngIf="stepIndexDisplayed else noStepIndexDisplayed">
+                        <div class="stepper__step__number">
+                            <span class="stepper__step__number--number">{{ (i + 1) }}</span>
+                        </div>
+                        <div class="stepper__step__number--label">{{ step.label | translate }}</div>
+                    </ng-container>
+                    <ng-template #noStepIndexDisplayed>
+                        <div class="stepper__step__label">{{ step.label | translate }}</div>
+                    </ng-template>
+
+                </div>
+            </ng-container>
+        </div>
+
+        <!-- STEPS BUTTONS INTO THE MENU -->
+        <div class="stepper__buttons">
+            <ng-content select="[stepperButtons]"></ng-content>
+        </div>
+    </div>
+    <div class="stepper__content">
+        <div class="container-fluid">
+            <!-- STEPS CONTENTS -->
+            <ng-container *ngFor="let step of steps">
+                <div class="px-1" [style.display]="step !== step._stepper.selected ? 'none' : 'block'">
+                    <div [ngTemplateOutlet]="step.content"></div>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="stepper__content__footer">
+            <ng-content select="[footer]"></ng-content>
+        </div>
+    </div>
+
+</div>

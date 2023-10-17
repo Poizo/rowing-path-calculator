@@ -1,0 +1,17 @@
+
+<label [for]="id" class="textfield" *ngIf="!readOnly" [ngClass]="(classes$ | async)!">
+  <input
+    class="textfield__field"
+    [id]="id"
+    [type]="type"
+    [maxlength]="maxLength"
+    [minlength]="minLength"
+    [placeholder]="placeholder ? (placeholder.label | translate:placeholder.param ): ''"
+    [formControl]="control"
+    (blur)="markControlAsTouch()"
+  >
+</label>
+
+<div class="field-readonly" *ngIf="readOnly">
+    {{ readonlyValue$ | async }}
+</div>

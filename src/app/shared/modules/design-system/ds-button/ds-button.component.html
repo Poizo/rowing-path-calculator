@@ -1,0 +1,16 @@
+<button class="button" [type]="isSubmitType ? 'submit' : 'button'" [ngClass]="classes" (click)="buttonClicked($event)">
+    <ng-container *ngIf="iconPlacement === DS_button_icon_placement_Enum.before.toString() || iconPlacement === DS_button_icon_placement_Enum.center.toString()"
+        [ngTemplateOutlet]="iconTemplate">
+    </ng-container>
+
+    <span *ngIf="!!label" class="button__label">
+        {{ label.label | translate: label.param }}
+    </span>
+
+    <ng-container *ngIf="iconPlacement === DS_button_icon_placement_Enum.after" [ngTemplateOutlet]="iconTemplate">
+    </ng-container>
+
+    <ng-template #iconTemplate>
+        <ds-icon *ngIf="!!icon" [icon]="icon"></ds-icon>
+    </ng-template>
+</button>

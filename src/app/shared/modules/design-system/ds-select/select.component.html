@@ -1,0 +1,17 @@
+<ng-container *ngIf="!readOnly">
+    <ng-select class="dropdown" [ngClass]="(classes$ | async)!" [formControl]="control" [compareWith]="compareWith"
+        [clearable]="clearable" [bindLabel]="$any(labelKey)" [multiple]="multiple">
+        <ng-option *ngFor="let option of options" [value]="option">
+            {{ option[labelKey] | translate }}
+        </ng-option>
+    </ng-select>
+</ng-container>
+
+<div class="field-readonly" *ngIf="readOnly">
+    <span *ngFor="let value of (readonlyValue$ | async); let last=last">
+        {{ value | translate }}
+        <ng-container *ngIf="!last">
+            ,
+        </ng-container>
+    </span>
+</div>

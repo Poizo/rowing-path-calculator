@@ -1,0 +1,11 @@
+<ds-button [ngClass]="classes" [type]="type"
+    [label]="{ label: label ? (label.label | translate: label.param) : 'Actions' }" [iconPlacement]="iconPlacement"
+    [icon]="icon" (clicked)="toggleMenu()"></ds-button>
+
+<div *ngIf="isOpened" class="button-menu-items" (dsClickOutside)="toggleMenu()">
+    <div class="button-menu-items__item" *ngFor="let action of actions">
+        <ds-button [type]="DS_ButtonTypeEnum.LINK"
+            [label]="{ label: (action.label.label | translate: action.label.param) }" (clicked)="buttonClicked(action)">
+        </ds-button>
+    </div>
+</div>

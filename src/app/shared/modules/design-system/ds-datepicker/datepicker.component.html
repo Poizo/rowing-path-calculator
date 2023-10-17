@@ -1,0 +1,9 @@
+<mat-form-field *ngIf="!readOnly" [ngClass]="(classes$ | async)!">
+    <input matInput [matDatepicker]="picker" [formControl]="control">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<div class="field-readonly" *ngIf="readOnly">
+    {{ readonlyValue$ | async | date: 'dd/MM/yyyy' }}
+</div>

@@ -1,0 +1,354 @@
+ index;" [matColumnDef]="column.columnDef">
+                        <!-- Header Cells -->
+                        <ng-container *ngIf="column.isSortable; else notSortableTh">
+                            <th mat-header-cell
+                                *matHeaderCellDef
+                                mat-sort-header
+                                [sortActionDescription]="(column.sortActionDescription?.label ?? '') | translate:column.sortActionDescription?.param"
+                                cdkDrag
+                                [cdkDragDisabled]="column.isDisabledReorderable  || column.isPinned"
+                                [hidden]="hiddenColumn.has(column.columnDef)"
+                                [ngClass]="{
+                                    '-fixed-left': column.isPinnable && column.isPinned,
+                                    '-fixed-right': column.isPinnedRight
+                                }"
+                                [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                                [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                                data-pinned-column-th
+                            >
+                            <ds-icon *ngIf="column.isPinnable"
+                                [icon]=" column.isPinned ? DS_IconsEnum.unpin : DS_IconsEnum.pin"
+                                (click)="togglePinnedColumn($event, column)"
+                            ></ds-icon>
+                            <span class="table-title">
+                                {{ column.headValue.label | translate: column.headValue.param }}
+                            </span>
+                            </th>
+                        </ng-container>
+
+                        <ng-template #notSortableTh>
+                            <th
+                            *matHeaderCellDef
+                            mat-header-cell
+                            cdkDrag
+                            [cdkDragDisabled]="column.isDisabledReorderable  || column.isPinned"
+                            [hidden]="hiddenColumn.has(column.columnDef)"
+                            [ngClass]="{
+                                '-fixed-left': column.isPinnable && column.isPinned,
+                                '-fixed-right': column.isPinnedRight
+                            }"
+                            [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                            [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                            data-pinned-column-th
+                            >
+                            <div class="flex items-center">
+                                <ds-icon *ngIf="column.isPinnable"
+                                    [icon]=" column.isPinned ? DS_IconsEnum.unpin : DS_IconsEnum.pin"
+                                    (click)="togglePinnedColumn($event, column)"
+                                ></ds-icon>
+                                <span class="table-title">
+                                    {{ column.headValue.label | translate: column.headValue.param }}
+                                </span>
+                            </div>
+                            </th>
+                        </ng-template>
+
+                        <!-- Body Cells -->
+                        <td mat-cell *matCellDef="let element" [hidden]="hiddenColumn.has(column.columnDef)" [ngClass]="{
+                            '-fixed-left': column.isPinnable && column.isPinned,
+                            '-fixed-right': column.isPinnedRight
+                        }"
+                        [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                        [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                        >
+                            <ng-container *ngIf="!!column.elementProperty">
+                                {{element[column.elementProperty]}}
+                            </ng-container>
+
+                            <ng-container *ngIf="!!column.template">
+                                <ng-container
+                                    [ngTemplateOutlet]="column.template"
+                                    [ngTemplateOutletContext]="{ element: element}"
+                                ></ng-container>
+                            </ng-container>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </ng-container>
+
+        <!-- Not Sortable Table -->
+        <ng-template #notSortableTableTmp>
+            <div class="-html-responsive-list">
+                <table *ngIf="datasource$ | async as dataSource" mat-table [dataSource]="dataSource"
+                cdkDropList
+                [cdkDropListDisabled]="!!config.isDisabledColumnsReorderable" cdkDropListOrientation="horizontal"
+                (cdkDropListDropped)="dropColumn($event)">
+
+                    <ng-container *ngFor="let column of config.columns; let index = index;" [matColumnDef]="column.columnDef">
+                        <th mat-header-cell
+                            *matHeaderCellDef
+                            cdkDrag
+                            [cdkDragDisabled]="column.isDisabledReorderable  || column.isPinned"
+                            [hidden]="hiddenColumn.has(column.columnDef)"
+                            [ngClass]="{
+                                '-fixed-left': column.isPinnable && column.isPinned,
+                                '-fixed-right': column.isPinnedRight
+                            }"
+                            [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                            [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                            data-pinned-column-th
+                        >
+                            <ds-icon *ngIf="column.isPinnable"
+                                [icon]=" column.isPinned ? DS_IconsEnum.unpin : DS_IconsEnum.pin"
+                                (click)="togglePinnedColumn($event, column)"
+                            ></ds-icon>
+                            <span class="table-title">
+                                {{ column.headValue.label | translate: column.headValue.param }}
+                            </span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let element"
+                            [hidden]="hiddenColumn.has(column.columnDef)"
+                            [ngClass]="{
+                                '-fixed-left': column.isPinnable && column.isPinned,
+                                '-fixed-right': column.isPinnedRight
+                            }"
+                            [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                            [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                            >
+                            <ng-container *ngIf="!!column.elementProperty">
+                                {{element[column.elementProperty]}}
+                            </ng-container>
+
+                            <ng-container *ngIf="!!column.template">
+                                <ng-container
+                                    [ngTemplateOutlet]="column.template"
+                                    [ngTemplateOutletContext]="{ element: element}"
+                                ></ng-container>
+                            </ng-container>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </ng-template>
+
+    </ng-container>
+
+    <!-- MAT-TABLE <mat-table> -->
+    <ng-template #noHtmlTableTmp>
+        <!-- Sortable List -->
+        <ng-container *ngIf="config.isTableSortable; else notSortableTmp">
+            <div class="-material-responsive-list">
+                <mat-table *ngIf="datasource$ | async as dataSource"
+                cdkDropList
+                [cdkDropListDisabled]="!!config.isDisabledColumnsReorderable" cdkDropListOrientation="horizontal"
+                (cdkDropListDropped)="dropColumn($event)"
+                matSort
+                [matSortDisableClear]="!!config.disableSortClear"
+                [dataSource]="dataSource"
+                (matSortChange)="sortingChange($event)">
+
+                <ng-container *ngFor="let column of config.columns; let index = index;" [matColumnDef]="column.columnDef">
+
+                    <!-- Header Cells -->
+                    <ng-container *ngIf="column.isSortable; else notSortableheaderCell">
+                        <mat-header-cell
+                            cdkDrag
+                            [cdkDragDisabled]="column.isDisabledReorderable  || column.isPinned"
+                            *matHeaderCellDef
+                            mat-sort-header
+                            [sortActionDescription]="(column.sortActionDescription?.label ?? '') | translate:column.sortActionDescription?.param"
+                            [hidden]="hiddenColumn.has(column.columnDef)"
+                            [ngClass]="{
+                                '-fixed-left': column.isPinnable && column.isPinned,
+                                '-fixed-right': column.isPinnedRight
+                            }"
+                            [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                            [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                            data-pinned-column-th
+                        >
+                        <ds-icon *ngIf="column.isPinnable"
+                            [icon]=" column.isPinned ? DS_IconsEnum.unpin : DS_IconsEnum.pin"
+                            (click)="togglePinnedColumn($event, column)"
+                        ></ds-icon>
+                        <span class="table-title">
+                            {{ column.headValue.label | translate: column.headValue.param }}
+                        </span>
+                        </mat-header-cell>
+                    </ng-container>
+                    <ng-template #notSortableheaderCell>
+                        <mat-header-cell
+                        *matHeaderCellDef
+                        cdkDrag
+                        [cdkDragDisabled]="column.isDisabledReorderable  || column.isPinned"
+                        [hidden]="hiddenColumn.has(column.columnDef)"
+                        [ngClass]="{
+                            '-fixed-left': column.isPinnable && column.isPinned,
+                            '-fixed-right': column.isPinnedRight
+                        }"
+                        [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                        [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                        data-pinned-column-th
+                        >
+                        <div class="flex items-center">
+                            <ds-icon *ngIf="column.isPinnable"
+                                [icon]=" column.isPinned ? DS_IconsEnum.unpin : DS_IconsEnum.pin"
+                                (click)="togglePinnedColumn($event, column)"
+                            ></ds-icon>
+                            <span class="table-title">
+                                {{ column.headValue.label | translate: column.headValue.param }}
+                            </span>
+                        </div>
+                        </mat-header-cell>
+                    </ng-template>
+
+                    <!-- Body Cells -->
+                    <mat-cell mat-cell *matCellDef="let element" [hidden]="hiddenColumn.has(column.columnDef)" [ngClass]="{
+                        '-fixed-left': column.isPinnable && column.isPinned,
+                        '-fixed-right': column.isPinnedRight
+                    }"
+                    [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                    [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                    >
+                        <ng-container *ngIf="!!column.elementProperty">
+                            {{element[column.elementProperty]}}
+                        </ng-container>
+
+                        <ng-container *ngIf="!!column.template">
+                            <ng-container
+                                [ngTemplateOutlet]="column.template"
+                                [ngTemplateOutletContext]="{ element: element}"
+                            ></ng-container>
+                        </ng-container>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Header and Row Declarations -->
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+        </ng-container>
+
+        <!-- Not Sortable List -->
+        <ng-template #notSortableTmp>
+            <div class="-material-responsive-list">
+                <mat-table *ngIf="datasource$ | async as dataSource" [dataSource]="dataSource" cdkDropList
+                [cdkDropListDisabled]="!!config.isDisabledColumnsReorderable" cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropColumn($event)">
+
+                    <ng-container *ngFor="let column of config.columns; let index = index;" [matColumnDef]="column.columnDef">
+
+                        <!-- Header Cells -->
+                        <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragDisabled]="column.isDisabledReorderable  || column.isPinned" [hidden]="hiddenColumn.has(column.columnDef)"
+                                        [ngClass]="{
+                                            '-fixed-left': column.isPinnable && column.isPinned,
+                                            '-fixed-right': column.isPinnedRight
+                                        }"
+                                        [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                                        [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                                        data-pinned-column-th
+                        >
+                        <ds-icon *ngIf="column.isPinnable"
+                         <div class="ds-table-list" *ngIf="!!config">
+    <!-- HTML TABLE <table> -->
+    <ng-container *ngIf="config.isHtmlTable; else noHtmlTableTmp">
+        <!-- Sortable Table -->
+        <ng-container *ngIf="config.isTableSortable; else notSortableTableTmp">
+            <div class="-html-responsive-list">
+                <table *ngIf="datasource$ | async as dataSource"
+                mat-table
+                matSort
+                [dataSource]="dataSource"
+                [matSortDisableClear]="!!config.disableSortClear"
+                (matSortChange)="sortingChange($event)"
+                cdkDropList
+                cdkDropListOrientation="horizontal"
+                [cdkDropListDisabled]="config.isDisabledColumnsReorderable"
+                (cdkDropListDropped)="dropColumn($event)"
+                >
+                    <ng-container *ngFor="let column of config.columns; let index =   [icon]=" column.isPinned ? DS_IconsEnum.unpin : DS_IconsEnum.pin"
+                            (click)="togglePinnedColumn($event, column)"
+                        ></ds-icon>
+                        <span class="table-title">
+                            {{ column.headValue.label | translate: column.headValue.param }}
+                        </span>
+                        </mat-header-cell>
+
+                        <!-- Body Cells -->
+                        <mat-cell
+                        mat-cell
+                        *matCellDef="let element"
+                        cdkDrag
+                        [cdkDragDisabled]="column.isDisabledReorderable  || column.isPinned"
+                        [hidden]="hiddenColumn.has(column.columnDef)"
+                        [ngClass]="{
+                            '-fixed-left': column.isPinnable && column.isPinned,
+                            '-fixed-right': column.isPinnedRight
+                        }"
+                        [attr.data-pinned-column]="column.isPinned ? index : 'non-pinned'"
+                        [attr.data-pinned-column-last]="column.isPinned && !(index +1 <= config.columns!.length &&config.columns![index+1] && config.columns![index+1].isPinned)"
+                        >
+                            <ng-container *ngIf="!!column.elementProperty">
+                                {{element[column.elementProperty]}}
+                            </ng-container>
+
+                            <ng-container *ngIf="!!column.template">
+                                <ng-container
+                                    [ngTemplateOutlet]="column.template"
+                                    [ngTemplateOutletContext]="{ element: element}"
+                                ></ng-container>
+                            </ng-container>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Header and Row Declarations -->
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+        </ng-template>
+
+    </ng-template>
+
+    <!-- Footer -->
+    <div class="ds-table-list__footer" *ngIf="!!config.pagination || !!config.isColumnActionInFooter">
+        <!-- Columns Actions -->
+        <div class="ds-table-list__footer-columns-actions-container" *ngIf="!!config.isColumnActionInFooter">
+            <div class="ds-table-list__footer-columns-actions-panel" (dsClickOutside)="toggleColumnsActionPanel(false)" *ngIf="columnsActionPanelShowed">
+                <form [formGroup]="columnActionPanelForm">
+                    <ul cdkDropList
+                    cdkDropListOrientation="vertical"
+                    [cdkDropListDisabled]="!config.isColumnActionInFooter.canReorder"
+                    (cdkDropListDropped)="dropColumn($event)">
+                        <li class="ds-table-list__footer-columns-actions-panel-item" cdkDrag [cdkDragDisabled]="column.isDisabledReorderable" *ngFor="let column of config.columns; let last = last">
+                            <ds-checkbox [formControlName]="column.columnDef" [id]="column.columnDef" [isDisabled]="column.isPinned" [label]="column.headValue"></ds-checkbox>
+                            <ds-icon class="text-grey-06" [icon]="DS_IconsEnum.draggable" *ngIf="!column.isDisabledReorderable"></ds-icon>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <button type="button" class="ds-table-list__footer-columns-actions-button" (click)="toggleColumnsActionPanel(true)">
+                <span class="columns-count">
+                    {{ (displayedColumns.length - hiddenColumn.size) }} <span class="columns-count-total">/ {{ displayedColumns.length }}</span>
+                </span>
+                <ds-icon class="text-action-primary" [icon]="DS_IconsEnum.table"></ds-icon>
+            </button>
+        </div>
+        <!-- Pagination -->
+        <mat-paginator *ngIf="!!config.pagination"
+                    [pageIndex]="config.pagination.pageIndex"
+                    [length]="config.pagination.length"
+                    [pageSize]="config.pagination.pageSize"
+                    [pageSizeOptions]="config.pagination.pageSizeOptions!"
+                    [hidePageSize]="config.pagination.hidePageSize"
+                    [showFirstLastButtons]="config.pagination.showFirstLastButtons"
+                    (page)="pagingChange($event)">
+        </mat-paginator>
+    </div>
+</div>

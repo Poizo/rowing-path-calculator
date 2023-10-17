@@ -1,0 +1,35 @@
+<ng-container *ngIf="!readOnly">
+    <div
+        class="textfield"
+        [ngClass]="(classes$ | async)!"
+        *ngIf="!(hasLink$ | async)">
+        <textarea
+            class="textfield__field"
+            [placeholder]="placeholder ? (placeholder.label | translate:placeholder.param ): ''"
+            [maxlength]="maxLength"
+            [formControl]="control"
+            (blur)="markControlAsTouch()"
+            [ngClass]="{ '-s':  maxLength! <= 255 }">
+        </textarea>
+    </div>
+
+    <div
+        class="textfield"
+        *ngIf="(hasLink$ | async)">
+        <div class="custom_textfield_URL">
+            <p [innerHTML]="control.value.replaceAll('\n', '<br>') | linky"></p>
+        </div>
+    </div>
+
+    <div
+        class="w-100 flex flex-end mt-xxs"
+        *ngIf="showCharsCounter && maxLength">
+        <span class="c-grey f-xxs f-regular c-grey06">
+            {{(valueSize$ | async) + '/' + maxLength}}
+        </span>
+    </div>
+</ng-container>
+
+<div class="field-readonly" *ngIf="readOnly">
+    {{ readonlyValue$ | async }}
+</div>

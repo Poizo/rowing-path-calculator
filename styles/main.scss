@@ -1,0 +1,87 @@
+/**
+* CSS variables instanciation
+*/
+
+:root {
+    --container-gutter-x: 12px;
+    --col-gutter-x: 12px;
+
+    --container-sm: 580px;
+    --container-md: 640px;
+    --container-lg: 960px;
+    --container-xl: 1024px;
+    --container-2xl: 1280px;
+
+    --color-bridge : #1B556C;
+    --color-building : #14849A;
+    --color-map-background:#EEF0F2;
+    --color-park:#BDE2C8;
+    --color-water:#9CC0F9;
+
+    --color-action-primary: #1166EE;
+    --color-action-dark: #0F5BD4;
+    --color-action-darker: #001639;
+    --color-action-light: #2B7DFF;
+    --color-action-lighter: #F0F6FF;
+
+
+    --color-success-primary: #12B159;
+    --color-success-dark: #098F45;
+    --color-success-darker: #002D14;
+    --color-success-light: #15D169;
+    --color-success-lighter: #E6FAEF;
+
+    --color-danger-primary: #D7191B;
+    --color-danger-dark: #BF0A0D;
+    --color-danger-darker: #650002;
+    --color-danger-light: #FF3336;
+    --color-danger-lighter: #FEEFEF;
+
+    --color-warning-primary: #FF7900;
+    --color-warning-dark: #E66D00;
+    --color-warning-darker: #572A02;
+    --color-warning-light: #FF9B40;
+    --color-warning-lighter: #FFF4EB;
+
+    --color-accent-primary: #FFEE24;
+    --color-accent-dark: #F5E523;
+    --color-accent-darker: #504A01;
+    --color-accent-light: #FFF470;
+    --color-accent-lighter: #FFFDEA;
+
+    --color-brand-primary: #002F51;
+    --color-brand-dark: #00121F;
+    --color-brand-darker: #000305;
+    --color-brand-light: #004D85;
+    --color-brand-lighter: #E8F4FC;
+}
+
+/**
+* Base layer
+*/
+
+@import 'base/template';
+@import 'base/typography';
+@import 'base/bootstrap-grid';
+
+
+/**
+ * Components layer
+ */
+
+@import 'components/buttons';
+@import 'components/modal';
+@import 'components/tags';
+@import 'components/tables';
+
+@import 'components/page-header';
+@import 'components/page-footer';
+
+@import 'components/forms.checkbox';
+@import 'components/forms.dropdown';
+@import 'components/forms.datepicker';
+@import 'components/forms.fieldreadonly';
+@import 'components/forms.radio';
+@import 'components/forms.textfield';
+@import 'components/forms';
+@import 'components/overlay';

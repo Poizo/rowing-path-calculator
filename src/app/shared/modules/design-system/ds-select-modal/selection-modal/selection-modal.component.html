@@ -1,0 +1,83 @@
+<div class="modal">
+    <h3 *ngIf="data.labels.title" mat-dialog-title>
+        {{ data.labels.title.label | translate: data.labels.title.param }}
+    </h3>
+    <div mat-dialog-content>
+        <p class="font-normal text-sm text-grey-10 pt-2 pb-1" *ngIf="data.labels.text">
+            {{ data.labels.text.label | translate: data.labels.text.param }}
+        </p>
+        <div class="my-1">
+            <ds-textfield [id]="textfieldId" [ngModel]="''" (ngModelChange)="filterChange($event)"
+                [placeholder]="data.labels.searchPlaceholder"></ds-textfield>
+        </div>
+        <div class="flex flex-wrap gap my-2">
+            <ng-container *ngFor="let item of data.selectedElements">
+                <ds-chips [label]="{ label: data.labelGetter(item, data.mainColumn) }" [displayCross]="true"
+                    (crossClick)="removeItem(item)"></ds-chips>
+            </ng-container>
+        </div>
+        <div class="table-container">
+            <table mat-table matSort [dataSource]="dataSource" (matSortChange)="sortChange($event)"
+                [matSortActive]="(dataSource.query$ | async)?.order?.orderByPropertyName || ''"
+                [matSortDirection]="(dataSource.query$ | async)?.order?.orderByDescending ? 'desc': 'asc'"
+                class="w-full beneficiaries-table modal-table">
+                <ng-container *ngFor="let column of data.columns">
+                    <ng-container [matColumnDef]="column">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="column !== data.mainColumn">
+                            {{
+                            data.labels.columnHeaders[column].label |
+                            translate: data.labels.columnHeaders[column].param }} </th>
+                        <td mat-cell *matCellDef="let item"> {{ data.labelGetter(item, column) }} </td>
+                    </ng-container>
+                </ng-container>
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef width="24px"></th>
+                    <td mat-cell *matCellDef="let item; let i = index">
+                        <div class="flex justify-center items-center">
+                            <ds-checkbox [ngModel]="isItemSelected(item)" [disabled]="isItemDisabled(item)"
+                                (ngModelChange)="$event !== null && toggleSelection(item, $event)" [id]="uid + '#' + i"
+                                (click)="$event.stopPropagation()">
+                            </ds-checkbox>
+                        </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+                <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay" (click)="toggleSelection(myRowData)">
+                </tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" [attr.colspan]="columnsToDisplay.length">
+                        <div class="py-4 flex flex-col justify-center items-center">
+                            <p class="text-grey-06 text-sm pb-2">
+                                {{ data.labels.emptySearchResult.label | translate: data.labels.emptySearchResult.param
+                                }}
+                            </p>
+                            <ds-button *ngIf="data.displayNoDataButton && data.labels.emptySearchResultButton"
+                                [type]="DS_ButtonTypeEnum.LINK" [iconPlacement]="DS_button_icon_placement_Enum.before"
+                                [icon]="DS_IconsEnum.plus" [label]="data.labels.emptySearchResultButton"
+                                (clicked)="noDataButtonClicked()">
+                            </ds-button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <ng-container *ngIf="dataSource.pageResult$ | async as pagination">
+            <mat-paginator *ngIf="pagination.totalSize && pagination.totalSize > 0" [length]="pagination.totalSize"
+                [pageSize]="pagination.size" [pageSizeOptions]="pageSizeOptions" [pageIndex]="pagination.pageNumber"
+                (page)="onPageChanged($event)" aria-label="Select page">
+            </mat-paginator>
+        </ng-container>
+    </div>
+    <div mat-dialog-actions>
+        <div class="w-full flex items-center justify-end pt-2">
+            <ds-button mat-button (clicked)="onButtonClicked(ButtonTypeEnum.CANCEL)" class="mr-2"
+                [type]="DS_ButtonTypeEnum.SECONDARY" [label]="data.labels.cancel">
+            </ds-button>
+            <ds-button mat-button (clicked)="onButtonClicked(ButtonTypeEnum.ACTION)" [type]="DS_ButtonTypeEnum.PRIMARY"
+                [label]="data.labels.confirm">
+            </ds-button>
+        </div>
+    </div>
+
+</div>

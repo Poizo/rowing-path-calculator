@@ -1,0 +1,32 @@
+{
+    "$schema": "./node_modules/ng-afelio/schema.json",
+    "style": {
+        "styleUtils": [
+            { "input": "ui-kit-styles.scss", "output": "style-utils.scss" }
+        ],
+        "files": [
+            { "input": "ui-kit-styles.scss", "output": "main.scss", "global": true }
+        ],
+        "baseInputDirectory": "./projects/ui-kit",
+        "baseOutputDirectory": "../../styles",
+        "inputPrefix": "./src/",
+        "addUiKitAssets": true,
+        "addAngularStyleShortcut": true
+    },
+    "i18n": {
+        "mainFile": "fr.json"
+    },
+    "environment": {
+        "mainFile": "environment.ts"
+    },
+    "plugins": {
+        "repos": [
+            {
+                "name": "user",
+                "type": "gitlab",
+                "url": "http://gitlab.codefactory1.afelio.be/api/v4/projects/548",
+                "token": "y1AA_WJxnHNXR5HVSgFS"
+            }
+        ]
+    }
+}

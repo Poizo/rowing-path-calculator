@@ -1,0 +1,15 @@
+<div class="tag"
+    [ngClass]="classes"
+    (click)="chipsClicked()">
+
+    {{ label.label | translate: label.param }}
+
+    <ds-button *ngIf="displayCross"
+                [type]="type"
+                [color]="color"
+                [iconPlacement]="DS_button_icon_placement_Enum.center"
+                [icon]="DS_IconsEnum.cross"
+                (clicked)="crossClicked()"
+                [stopPropagation]="true">
+    </ds-button>
+</div>

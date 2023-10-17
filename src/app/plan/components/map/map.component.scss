@@ -1,0 +1,65 @@
+@mixin focusSVGElement {
+    outline:  8px solid var(--color-accent-dark);
+    outline-offset: 2px;
+    border-radius: 2rem;
+}
+
+.map-container {
+    @apply pt-12 pb-8 h-screen;
+
+    svg {
+        @apply h-full m-auto;
+
+        .map-background{
+            fill:var(--color-map-background);
+        }
+
+        .park{
+            fill:var(--color-park);
+        }
+
+        .water{
+            fill:var(--color-water);
+        }
+
+        .bridge-pointer{
+            fill: var(--color-bridge);
+            stroke: var(--color-bridge);
+            stroke-linejoin: round;
+            @apply cursor-pointer;
+
+            transition-property: stroke-width;
+            transition-duration: 250ms;
+            transition-timing-function: ease-in-out;
+
+            &:hover, &:focus {
+                stroke-width: 2.5rem;
+                @include focusSVGElement;
+            }
+        }
+
+        .building-pointer {
+            fill: var(--color-building);
+            @apply cursor-pointer relative;
+
+            transition-property: r;
+            transition-duration: 250ms;
+            transition-timing-function: ease-in-out;
+
+            &:hover, &:focus {
+                r: 20;
+                @include focusSVGElement;
+            }
+
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 150%;
+                height: 150%;
+                background-color: red;
+            }
+        }
+
+    }
+}

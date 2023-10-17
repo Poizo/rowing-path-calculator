@@ -1,0 +1,22 @@
+)];;
+
+    .button-menu-items__item {
+        @apply hover:bg-action-lighter transition-colors py-2 px-3;
+
+        &:not(:last-child) {
+            @apply border-b border-b-grey-02
+        }
+    }
+}
+
+.items--up+.button-menu-items {
+    @apply 
+        w-full 
+        bottom-[calc(100%+8px)]
+}
+:host {
+    @apply w-full relative;
+}
+
+.button-menu-items {
+    @apply z-[1] right-0 w-[220px] absolute bg-grey-00 rounded shadow-[2px_0_8px_0_rgba(4,4,5,.12

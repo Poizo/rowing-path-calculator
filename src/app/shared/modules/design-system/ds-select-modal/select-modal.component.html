@@ -1,0 +1,13 @@
+<ng-container *ngIf="(data | async) as listItems">
+    <div class="flex flex-wrap gap py-1" *ngIf="listItems.length > 0">
+        <ng-container *ngFor="let item of listItems">
+            <ds-chips (chipsClick)="chipsClicked(item)" [label]="{ label: labelGetter(item, mainColumn) }"
+                [clickable]="itemsClickabled"></ds-chips>
+        </ng-container>
+    </div>
+</ng-container>
+
+<ds-button [type]="DS_ButtonTypeEnum.LINK" [label]="label" [icon]="DS_IconsEnum.plus"
+    [iconPlacement]="DS_button_icon_placement_Enum.before" (clicked)="openSelectionModal()"
+    *ngIf="!readOnly && !(disabled$ | async)">
+</ds-button>

@@ -1,0 +1,21 @@
+[iconPlacement]="DS_button_icon_placement_Enum.before" [icon]="DS_IconsEnum.plus" [label]="addButtonLabel">
+        </ds-button>
+    </div>
+</div>
+<ng-container *ngIf="controlTemplate">
+    <ng-container *ngFor="let control of formArray.controls; let i=index">
+        <div class="flex w-full mb-1 last:mb-0">
+            <ng-container [ngTemplateOutlet]="controlTemplate"
+                [ngTemplateOutletContext]="{ control: control, readOnly: readOnly }">
+            </ng-container>
+            <ds-button mat-button *ngIf="!readOnly && (formArray.length > min)" (clicked)="removeItem(i)"
+                [iconPlacement]="DS_button_icon_placement_Enum.center" [icon]="DS_IconsEnum.cross"
+                [type]="DS_ButtonTypeEnum.LINK" [label]="{ label: '' }"></ds-button>
+        </div>
+    </ng-container>
+</ng-container>
+
+<div class="mt-1 w-full" *ngIf="!readOnly && (max === 0 || formArray.length < max)">
+    <div class="w-fit">
+        <ds-button mat-button [disabled]="formArray.invalid" (clicked)="addItem()" [type]="DS_ButtonTypeEnum.SECONDARY"
+            

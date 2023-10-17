@@ -1,0 +1,9 @@
+<nav>
+    <ul class="flex">
+        <li *ngFor="let tab of tabs">
+            <a [routerLink]="tab.url" routerLinkActive="-active" class="ds-tab">
+                {{ tab.label.label | translate: tab.label.param }}
+            </a>
+        </li>
+    </ul>
+</nav>
