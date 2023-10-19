@@ -1,0 +1,11 @@
+<header>
+    <h1>
+        Rowing Path Calculator!
+    </h1>
+    <button type="button" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">stop</button>
+
+    <ng-template #stopRecordTmp>
+        <button type="button" (click)="startARecord()">+</button>
+    </ng-template>
+
+</header>

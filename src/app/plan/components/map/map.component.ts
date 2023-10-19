@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, ViewChild } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { BridgesNameEnum } from '../../../enums/bridge-name.enum';
 import { BuildingNameEnum } from '../../../enums/building-name.enum';
 import { Pointer } from '../../models/pointer.model';
@@ -17,13 +17,17 @@ export class MapComponent {
 
     @ViewChild('pointerTooltip') pointerTooltip!: ElementRef<HTMLDivElement>;
 
+    public isRecording$: Observable<boolean>;
+
     public readonly BuildingNameEnum =  BuildingNameEnum;
     public readonly BridgesNameEnum =  BridgesNameEnum;
 
     public pointerFocusName: PointerName | null = null;
     public selectedItem$ = new Subject<Pointer | null>();
 
-    constructor(private planService: PlanService, @Inject(DOCUMENT) private document: Document) { }
+    constructor(private planService: PlanService, @Inject(DOCUMENT) private document: Document) {
+        this.isRecording$ = this.planService.isRecordingJourney$;
+    }
 
     public handlePointerClick(e: Event, pointerClicked: PointerName) {
         e.stopPropagation();
@@ -31,22 +35,14 @@ export class MapComponent {
             if (pointer) {
                 this.pointerFocusName = pointerClicked;
                 this.selectedItem$.next(pointer);
-                // settimeou because of ngif need to render the elementRef before act on it
-                setTimeout(() => {
-                    const tooltip: HTMLDivElement = this.pointerTooltip.nativeElement;
-                    let x = (e as PointerEvent).x;
-                    let y = (e as PointerEvent).y;
-                    const windowHeight = this.document.documentElement.clientHeight;
-                    const windowWidth = this.document.documentElement.clientWidth;
-                    if (x > windowWidth/2) {
-                        x = x - tooltip.clientWidth;
-                    }
-                    if (y > windowHeight/2) {
-                        y = y - tooltip.clientHeight;
-                    }
-                    tooltip.style.top = `${y}px`;
-                    tooltip.style.left = `${x}px`;
-                }, 0);
+                if (this.planService.isRecording()) {
+                    console.log(pointer);
+
+                } else {
+                    this.showInformationTooltip((e as PointerEvent));
+                }
+
+
             }
         });
     }
@@ -54,5 +50,24 @@ export class MapComponent {
     public clearSelection() {
         this.pointerFocusName = null;
         this.selectedItem$.next(null);
+    }
+
+    private showInformationTooltip(e: PointerEvent) {
+        // settimeout because of ngif need to render the elementRef before act on it
+        setTimeout(() => {
+            const tooltip: HTMLDivElement = this.pointerTooltip.nativeElement;
+            let x = e.x;
+            let y = e.y;
+            const windowHeight = this.document.documentElement.clientHeight;
+            const windowWidth = this.document.documentElement.clientWidth;
+            if (x > windowWidth/2) {
+                x = x - tooltip.clientWidth;
+            }
+            if (y > windowHeight/2) {
+                y = y - tooltip.clientHeight;
+            }
+            tooltip.style.top = `${y}px`;
+            tooltip.style.left = `${x}px`;
+        }, 0);
     }
 }

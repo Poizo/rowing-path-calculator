@@ -1,24 +1,38 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { GET_ALL_POINTERS } from '../../DB/pointers.data';
-import { Observable, of } from 'rxjs';
 import { Pointer } from '../../models/pointer.model';
-import { PointerName } from '../../types/pointer-name.type';
 import { AllPointersDictionnary } from '../../types/all-pointers-dictionnary.type';
+import { PointerName } from '../../types/pointer-name.type';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PlanService {
 
     allPointers: AllPointersDictionnary = GET_ALL_POINTERS();
 
-  constructor() { }
+    public isRecordingJourney$ = new BehaviorSubject<boolean>(false);
 
-  public getAllPointers(): Observable<(Pointer | null)[]> {
-    return of(Object.keys(this.allPointers).map(key => this.allPointers[(key as PointerName)]));
-  }
+    constructor() { }
 
-  public getPointer(pointerName: PointerName): Observable<Pointer | null> {
-    return of(this.allPointers[pointerName]);
-  }
+    public isRecording(): boolean {
+        return this.isRecordingJourney$.value;
+    }
+
+    public getAllPointers(): Observable<(Pointer | null)[]> {
+        return of(Object.keys(this.allPointers).map(key => this.allPointers[(key as PointerName)]));
+    }
+
+    public getPointer(pointerName: PointerName): Observable<Pointer | null> {
+        return of(this.allPointers[pointerName]);
+    }
+
+    public startRecordAJourney() {
+        this.isRecordingJourney$.next(true);
+    }
+
+    public stopRecordingJourney() {
+        this.isRecordingJourney$.next(false);
+    }
 }

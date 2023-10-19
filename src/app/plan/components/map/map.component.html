@@ -158,10 +158,13 @@
     </div>
 </div>
 
-<ng-container  *ngIf="selectedItem$ | async as item">
-    <div class="map-overlay" (click)="clearSelection()"></div>
-    <div #pointerTooltip class="pointer-info-tooltip">
-        <span class="block text-base font-medium text-grey-08">{{ item.name }}</span>
-        <p>{{ item.description }}</p>
-    </div>
+<ng-container *ngIf="!(isRecording$ | async)">
+    <ng-container  *ngIf="selectedItem$ | async as item">
+        <div class="map-overlay" (click)="clearSelection()"></div>
+        <div #pointerTooltip class="pointer-info-tooltip">
+            <span class="block text-base font-medium text-grey-08">{{ item.name }}</span>
+            <p>{{ item.description }}</p>
+        </div>
+    </ng-container>
 </ng-container>
+
