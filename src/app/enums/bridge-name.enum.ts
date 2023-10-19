@@ -17,4 +17,5 @@ export enum BridgesNameEnum {
     PONT_AMERCOEUR = "Pont d'Amercoeur",
     PONT_BRESSOUX = "Pont de Bressoux"
 
+
 }

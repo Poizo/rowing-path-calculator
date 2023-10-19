@@ -22,21 +22,9 @@ export class MapComponent {
     public pointerFocusName: PointerName | null = null;
     public selectedItem$ = new Subject<Pointer | null>();
 
-    constructor(private planService: PlanService) {}
+    constructor(private planService: PlanService) { }
 
     public handlePointerClick(e: Event, pointerClicked: PointerName) {
-        if (
-            // POINTERS UNACTIVE FOR NOW
-            pointerClicked === BridgesNameEnum.PONT_FRAGNE ||
-            pointerClicked === BridgesNameEnum.PONT_CHEMIN_FER ||
-            pointerClicked === BridgesNameEnum.PONT_LIEGE ||
-            pointerClicked === BridgesNameEnum.PONT_BELLE_ILE ||
-            pointerClicked === BridgesNameEnum.PONT_NAMUR ||
-            pointerClicked === BridgesNameEnum.PONT_FETINNE
-        ) {
-            return;
-        }
-
         this.planService.getPointer(pointerClicked).subscribe( pointer => {
             if (pointer) {
                 this.pointerFocusName = pointerClicked;
