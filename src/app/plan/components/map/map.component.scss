@@ -1,8 +1,8 @@
 .map-container {
-    @apply pt-12 pb-8 h-screen relative;
+    @apply pt-12 pb-8 h-screen w-full relative;
 
     svg {
-        @apply h-full m-auto;
+        @apply w-full m-auto;
 
         .map-background{
             fill:var(--color-map-background);
@@ -82,4 +82,8 @@
 
 .map-overlay {
     @apply z-10 fixed h-screen w-screen opacity-0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
