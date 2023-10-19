@@ -26,6 +26,7 @@ export class MapComponent {
     constructor(private planService: PlanService, @Inject(DOCUMENT) private document: Document) { }
 
     public handlePointerClick(e: Event, pointerClicked: PointerName) {
+        e.stopPropagation();
         this.planService.getPointer(pointerClicked).subscribe( pointer => {
             if (pointer) {
                 this.pointerFocusName = pointerClicked;
