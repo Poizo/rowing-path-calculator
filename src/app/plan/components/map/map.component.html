@@ -1,4 +1,29 @@
-<div class="container">
+<div class="container pt-4">
+    <div class="row" *ngIf="isRecording$ | async; else notRecordingTmp">
+        <div class="col-12">
+            <form [formGroup]="form" class="w-full rounded py-2 px-3 bg-grey-00">
+                <div class="flex items-center">
+                    <div class="text-base font-medium text-grey-08 w-full border-b border-solid border-brand-lighter mb-1">
+                        {{ 'PLAN.RECORD_JOURNEY.TITLE' | translate }}
+                    </div>
+                    <button class="button --circle --small button--auto" type="button" (click)="addStage()">+</button>
+                </div>
+                <ul>
+                    <li [ngClass]="{'mb-1': !last}" *ngFor="let stage of stages; let index = index;let last = last;">
+                        <app-encode-stage-row
+                            [formControlName]="stage.id"
+                            [stage]="stage"
+                            [index]="index"
+                            (stageDelete)="deleteStage(stage)"
+                            (stepInputClick)="selectStepinput(stage, $event)"
+                        ></app-encode-stage-row>
+                    </li>
+                </ul>
+
+            </form>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12">
             <div class="map-container">
@@ -158,7 +183,8 @@
     </div>
 </div>
 
-<ng-container *ngIf="!(isRecording$ | async)">
+
+<ng-template #notRecordingTmp>
     <ng-container  *ngIf="selectedItem$ | async as item">
         <div class="map-overlay" (click)="clearSelection()"></div>
         <div #pointerTooltip class="pointer-info-tooltip">
@@ -166,5 +192,6 @@
             <p>{{ item.description }}</p>
         </div>
     </ng-container>
-</ng-container>
+</ng-template>
+
 

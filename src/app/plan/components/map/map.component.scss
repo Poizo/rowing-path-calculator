@@ -1,8 +1,9 @@
 .map-container {
-    @apply pt-12 pb-8 h-screen w-full relative;
+    @apply py-4 h-screen w-full relative;
 
     svg {
         @apply w-full m-auto;
+        max-height: 800px;
 
         .map-background{
             fill:var(--color-map-background);

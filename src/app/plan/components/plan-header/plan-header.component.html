@@ -1,11 +1,19 @@
-<header>
-    <h1>
-        Rowing Path Calculator!
+<header class="flex justify-between items-center px-4 py-2 bg-grey-00 border-b border-solid border-brand-lighter sticky top-0 left-0 right-0 shadow w-screen z-[500]">
+    <h1 class="text-lg font-medium text-brand-darker">
+        {{ 'PLAN.HEADER.TITLE' | translate }}
     </h1>
-    <button type="button" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">stop</button>
+    <div class="pl-3 flex items-center">
+        <button class="button" type="button" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">stop</button>
 
-    <ng-template #stopRecordTmp>
-        <button type="button" (click)="startARecord()">+</button>
-    </ng-template>
+        <ng-template #stopRecordTmp>
+            <button class="button" type="button" (click)="startARecord()">+</button>
+        </ng-template>
 
+        <button class="button" type="button" (click)="toggleHelp()">?</button>
+    </div>
 </header>
+
+<div *ngIf="showHelp$ | async" class="p-4 bg-grey-00 fixed top-0 left-0 right-0 h-screen w-screen z-[1000]">
+    <button class="button" type="button" (click)="toggleHelp(false)">close</button>
+    help
+</div>

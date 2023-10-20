@@ -1,0 +1,26 @@
+<div class="flex items-center justify-between " *ngIf="!!stage; else noStageTmp">
+    <span class="rounded-full text-xs text-brand-primary p-2 bg-brand-lighter mr-1">{{ index }}</span>
+
+    <label [for]="'stage_start_' + stage.id" class="textfield" (click)="selectStepinput('start')">
+        <input class="textfield__field" [formControl]="startControl" readonly type="text" [id]="'stage_start_' + stage.id">
+    </label>
+
+    <span class="text-xs text-brand-primary p-1 mx-1">-</span>
+
+    <label [for]="'stage_end_' + stage.id" class="textfield" (click)="selectStepinput('end')">
+        <input class="textfield__field" [formControl]="endControl" readonly type="text" [id]="'stage_end_' + stage.id">
+    </label>
+
+    <label [for]="'stage_count_' + stage.id" class="textfield --small -no-arrows ml-2">
+        <span class="textfield__suffix">x</span>
+        <input class="textfield__field" type="number" [formControl]="countControl" [id]="'stage_count_' + stage.id">
+    </label>
+
+    <button (click)="deleteStage()" type="button" class="rounded-full text-xs text-danger-primary p-2 bg-danger-lighter ml-1 hover:text-danger-lighter hover:bg-danger-dark">S</button>
+</div>
+
+<ng-template #noStageTmp>
+    <span class="text-warning-primary">
+        ERROR -- NO STAGE!
+    </span>
+</ng-template>

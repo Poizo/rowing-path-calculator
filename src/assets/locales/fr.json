@@ -1,3 +1,10 @@
 {
-    "HELLO": "Bonjour"
+    "PLAN": {
+        "HEADER": {
+            "TITLE": "Rowing Path Calculator!"
+        },
+        "RECORD_JOURNEY": {
+            "TITLE": "Encoder une sortie par étapes"
+        }
+    }
 }

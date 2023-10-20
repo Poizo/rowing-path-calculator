@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PlanService } from '../../services/plan/plan.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-plan-header',
@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class PlanHeaderComponent {
 
     public isRecording$: Observable<boolean>;
+    public showHelp$ = new Subject<boolean>();
 
     constructor(private planService: PlanService) {
         this.isRecording$ = this.planService.isRecordingJourney$;
@@ -22,5 +23,9 @@ export class PlanHeaderComponent {
 
     public stopRecord() {
         this.planService.stopRecordingJourney();
+    }
+
+    public toggleHelp(show = true) {
+        this.showHelp$.next(show);
     }
 }
