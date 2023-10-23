@@ -1,5 +1,7 @@
+<div class="map-overlay" (click)="clearSelection()" *ngIf="showOverlay$ | async"></div>
+
 <div class="container pt-4">
-    <div class="row" *ngIf="isRecording$ | async; else notRecordingTmp">
+    <div class="row" *ngIf="isRecording$ | async">
         <div class="col-12">
             <form [formGroup]="form" class="w-full rounded py-2 px-3 bg-grey-00">
                 <div class="flex items-center">
@@ -14,6 +16,7 @@
                             [formControlName]="stage.id"
                             [stage]="stage"
                             [index]="index"
+                            (stageEmiter)="showClickedStage(stage)"
                             (stageDelete)="deleteStage(stage)"
                             (stepInputClick)="selectStepinput(stage, $event)"
                         ></app-encode-stage-row>
@@ -26,9 +29,9 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="map-container">
+            <div class="map-container" [ngClass]="{'z-[15]': selectedStageTarget$ | async}">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1080 1618" xml:space="preserve">
-                    <g id="background_map">
+                    <g id="background_map" (click)="clearSelection()">
                         <rect class="map-background" width="1080" height="1618"/>
                         <path class="park" d="M534.8,771.2c-5.6,1.4-10.6,2.7-14.8,3.8c-34,9-42-22-59-50s-38-90-73.9-108.5l-39.2-2.5
                             c-7.3,52.8-1.7,111.9,22.1,185.9c52,161.2,205,327,205,327L560,929L534.8,771.2z"/>
@@ -47,43 +50,43 @@
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_BELLE_LIEGEOISE)">
                             <circle cx="380" cy="850" r="45" fill="transparent"/>
                             <circle cx="470" cy="790" r="35" fill="transparent"></circle>
-                            <path class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_BELLE_LIEGEOISE}" d="M371,868c0,0,43-30,53-37s62-36,62-36l-1-2l-58.2,33.7l12.2-10.3l-2-1.4l-67,52L371,868z"/>
+                            <path class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_BELLE_LIEGEOISE) || (highlightedPointers.start === BridgesNameEnum.PONT_BELLE_LIEGEOISE) || (highlightedPointers.end === BridgesNameEnum.PONT_BELLE_LIEGEOISE)}" d="M371,868c0,0,43-30,53-37s62-36,62-36l-1-2l-58.2,33.7l12.2-10.3l-2-1.4l-67,52L371,868z"/>
                             <path class="bridge-pointer" d="M371,868c0,0,43-30,53-37s62-36,62-36l-1-2l-58.2,33.7l12.2-10.3l-2-1.4l-67,52L371,868z"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_ALBERT_1)">
                             <circle cx="352" cy="606" r="45" fill="transparent"></circle>
-                            <path class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_ALBERT_1}" d="M316,605c0,0,42,3,73,12l3-14c0,0-43.1-6.4-74.5-10.2L316,605z"/>
+                            <path class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_ALBERT_1) || (highlightedPointers.start === BridgesNameEnum.PONT_ALBERT_1) || (highlightedPointers.end === BridgesNameEnum.PONT_ALBERT_1)}" d="M316,605c0,0,42,3,73,12l3-14c0,0-43.1-6.4-74.5-10.2L316,605z"/>
                             <path class="bridge-pointer" d="M316,605c0,0,42,3,73,12l3-14c0,0-43.1-6.4-74.5-10.2L316,605z"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_JF_KENNEDY)">
                             <circle cx="496" cy="306" r="45" fill="transparent"/>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_JF_KENNEDY}" points="459,298 529,328 534,318 463,288 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_JF_KENNEDY) || (highlightedPointers.start === BridgesNameEnum.PONT_JF_KENNEDY) || (highlightedPointers.end === BridgesNameEnum.PONT_JF_KENNEDY)}" points="459,298 529,328 534,318 463,288 	"/>
                             <polygon class="bridge-pointer" points="459,298 529,328 534,318 463,288 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_SAUCY)">
                             <circle cx="527" cy="133" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_SAUCY}" points="495,125 562,147 563,142 496,121 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_SAUCY) || (highlightedPointers.start === BridgesNameEnum.PONT_SAUCY) || (highlightedPointers.end === BridgesNameEnum.PONT_SAUCY)}" points="495,125 562,147 563,142 496,121 	"/>
                             <polygon class="bridge-pointer" points="495,125 562,147 563,142 496,121 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_ARCHE)">
                             <circle cx="569" cy="11" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_ARCHE}" points="536.6,2.6 538,0 553.9,0 594,22 589,30 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_ARCHE) || (highlightedPointers.start === BridgesNameEnum.PONT_ARCHE) || (highlightedPointers.end === BridgesNameEnum.PONT_ARCHE)}" points="536.6,2.6 538,0 553.9,0 594,22 589,30 	"/>
                             <polygon class="bridge-pointer" points="536.6,2.6 538,0 553.9,0 594,22 589,30 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_FRAGNE)">
                             <circle cx="576" cy="1237" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_FRAGNE}" points="531,1244 616,1217 619,1228 535,1254 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_FRAGNE) || (highlightedPointers.start === BridgesNameEnum.PONT_FRAGNE) || (highlightedPointers.end === BridgesNameEnum.PONT_FRAGNE)}" points="531,1244 616,1217 619,1228 535,1254 	"/>
                             <polygon class="bridge-pointer" points="531,1244 616,1217 619,1228 535,1254 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_CHEMIN_FER)">
                             <polygon fill="transparent" points="510,1400 600,1390 650,1450 650,1480 510,1435 	"></polygon>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_CHEMIN_FER}" points="537,1414 624,1444 623,1446 536,1417 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_CHEMIN_FER) || (highlightedPointers.start === BridgesNameEnum.PONT_CHEMIN_FER) || (highlightedPointers.end === BridgesNameEnum.PONT_CHEMIN_FER)}" points="537,1414 624,1444 623,1446 536,1417 	"/>
                             <polygon class="bridge-pointer" points="537,1414 624,1444 623,1446 536,1417 	"/>
                             <polygon class="bridge-pointer" points="535.5,1418.5 622.5,1448.5 621.5,1450.5 534.5,1421.5 	"/>
                             <polygon class="bridge-pointer" points="534.5,1422.5 621.5,1452.5 620.5,1454.5 533.5,1425.5 	"/>
@@ -91,61 +94,61 @@
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_LIEGE)">
                             <polygon fill="transparent" points="620,1475 505,1456 513,1492 550,1520 605,1505 	"></polygon>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_LIEGE}" points="609,1483 522,1466 518,1482 604,1498 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_LIEGE) || (highlightedPointers.start === BridgesNameEnum.PONT_LIEGE) || (highlightedPointers.end === BridgesNameEnum.PONT_LIEGE)}" points="609,1483 522,1466 518,1482 604,1498 	"/>
                             <polygon class="bridge-pointer" points="609,1483 522,1466 518,1482 604,1498 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_BELLE_ILE)">
                             <circle cx="1000" cy="1397" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_BELLE_ILE}" points="995,1418 1021,1383 1014,1379 988,1414 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_BELLE_ILE) || (highlightedPointers.start === BridgesNameEnum.PONT_BELLE_ILE) || (highlightedPointers.end === BridgesNameEnum.PONT_BELLE_ILE)}" points="995,1418 1021,1383 1014,1379 988,1414 	"/>
                             <polygon class="bridge-pointer" points="995,1418 1021,1383 1014,1379 988,1414 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_NAMUR)">
                             <circle cx="818" cy="1275" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_NAMUR}" points="818,1296 826,1257 822,1255.9 814,1295 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_NAMUR) || (highlightedPointers.start === BridgesNameEnum.PONT_NAMUR) || (highlightedPointers.end === BridgesNameEnum.PONT_NAMUR)}" points="818,1296 826,1257 822,1255.9 814,1295 	"/>
                             <polygon class="bridge-pointer" points="818,1296 826,1257 822,1255.9 814,1295 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_FETINNE)">
                             <circle cx="660" cy="1190" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_FETINNE}" points="651,1210 678,1179 670,1172 644,1203 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_FETINNE) || (highlightedPointers.start === BridgesNameEnum.PONT_FETINNE) || (highlightedPointers.end === BridgesNameEnum.PONT_FETINNE)}" points="651,1210 678,1179 670,1172 644,1203 	"/>
                             <polygon class="bridge-pointer" points="651,1210 678,1179 670,1172 644,1203 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_MATIVA)">
                             <circle cx="575" cy="1015" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_MATIVA}" points="554,1019 584,1016 583,1013 554,1016 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_MATIVA) || (highlightedPointers.start === BridgesNameEnum.PONT_MATIVA) || (highlightedPointers.end === BridgesNameEnum.PONT_MATIVA)}" points="554,1019 584,1016 583,1013 554,1016 	"/>
                             <polygon class="bridge-pointer" points="554,1019 584,1016 583,1013 554,1016 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_PARC)">
                             <circle cx="540" cy="765" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_PARC}" points="520,775 550,768 549,758 518,765 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_PARC) || (highlightedPointers.start === BridgesNameEnum.PONT_PARC) || (highlightedPointers.end === BridgesNameEnum.PONT_PARC)}" points="520,775 550,768 549,758 518,765 	"/>
                             <polygon class="bridge-pointer" points="520,775 550,768 549,758 518,765 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_HUY)">
                             <circle cx="500" cy="580" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_HUY}" points="530,592 495,593 494,582 530,581 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_HUY) || (highlightedPointers.start === BridgesNameEnum.PONT_HUY) || (highlightedPointers.end === BridgesNameEnum.PONT_HUY)}" points="530,592 495,593 494,582 530,581 	"/>
                             <polygon class="bridge-pointer" points="530,592 495,593 494,582 530,581 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_LONGDOZ)">
                             <circle cx="571" cy="375" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_LONGDOZ}" points="576,391 558,367 568,360 586,385 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_LONGDOZ) || (highlightedPointers.start === BridgesNameEnum.PONT_LONGDOZ) || (highlightedPointers.end === BridgesNameEnum.PONT_LONGDOZ)}" points="576,391 558,367 568,360 586,385 	"/>
                             <polygon class="bridge-pointer" points="576,391 558,367 568,360 586,385 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_AMERCOEUR)">
                             <circle cx="852" cy="310" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_AMERCOEUR}" points="862,323 835,305 841,297 868,315 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_AMERCOEUR) || (highlightedPointers.start === BridgesNameEnum.PONT_AMERCOEUR) || (highlightedPointers.end === BridgesNameEnum.PONT_AMERCOEUR)}" points="862,323 835,305 841,297 868,315 	"/>
                             <polygon class="bridge-pointer" points="862,323 835,305 841,297 868,315 	"/>
                         </g>
 
                         <g (click)="handlePointerClick($event, BridgesNameEnum.PONT_BRESSOUX)">
                             <circle cx="985" cy="85" r="45" fill="transparent"></circle>
-                            <polygon class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BridgesNameEnum.PONT_BRESSOUX}" points="1006,91 969,68 963,79 1000,101 	"/>
+                            <polygon class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BridgesNameEnum.PONT_BRESSOUX) || (highlightedPointers.start === BridgesNameEnum.PONT_BRESSOUX) || (highlightedPointers.end === BridgesNameEnum.PONT_BRESSOUX)}" points="1006,91 969,68 963,79 1000,101 	"/>
                             <polygon class="bridge-pointer" points="1006,91 969,68 963,79 1000,101 	"/>
                         </g>
 
@@ -153,27 +156,27 @@
                     <g id="building">
                         <g (click)="handlePointerClick($event, BuildingNameEnum.RSNM)">
                             <circle cx="440" cy="835" r="45" fill="transparent"></circle>
-                            <circle class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BuildingNameEnum.RSNM }" cx="439" cy="834" r="22.5"/>
+                            <circle class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BuildingNameEnum.RSNM) || (highlightedPointers.start === BuildingNameEnum.RSNM) || (highlightedPointers.end === BuildingNameEnum.RSNM) }" cx="439" cy="834" r="22.5"/>
                             <circle class="building-pointer" cx="439" cy="834" r="10"/>
                         </g>
                         <g (click)="handlePointerClick($event, BuildingNameEnum.MEDIACITE)">
                             <circle cx="550" cy="598" r="45" fill="transparent"></circle>
-                            <circle class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BuildingNameEnum.MEDIACITE }" cx="530" cy="598" r="22.5"/>
+                            <circle class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BuildingNameEnum.MEDIACITE) || (highlightedPointers.start === BuildingNameEnum.MEDIACITE) || (highlightedPointers.end === BuildingNameEnum.MEDIACITE) }" cx="530" cy="598" r="22.5"/>
                             <circle class="building-pointer" cx="530" cy="598" r="10"/>
                         </g>
                         <g (click)="handlePointerClick($event, BuildingNameEnum.UNL)">
                             <circle cx="530" cy="1031" r="45" fill="transparent"></circle>
-                            <circle class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BuildingNameEnum.UNL }" cx="530" cy="1031" r="22.5"/>
+                            <circle class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BuildingNameEnum.UNL) || (highlightedPointers.start === BuildingNameEnum.UNL) || (highlightedPointers.end === BuildingNameEnum.UNL) }" cx="530" cy="1031" r="22.5"/>
                             <circle class="building-pointer" cx="530" cy="1031" r="10"/>
                         </g>
                         <g (click)="handlePointerClick($event, BuildingNameEnum.CONFLUENT)">
                             <circle cx="569" cy="1107.8" r="45" fill="transparent"></circle>
-                            <circle class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BuildingNameEnum.CONFLUENT }" cx="569" cy="1107.8" r="22.5"/>
+                            <circle class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BuildingNameEnum.CONFLUENT) || (highlightedPointers.start === BuildingNameEnum.CONFLUENT) || (highlightedPointers.end === BuildingNameEnum.CONFLUENT) }" cx="569" cy="1107.8" r="22.5"/>
                             <circle class="building-pointer" cx="569" cy="1107.8" r="10"/>
                         </g>
                         <g (click)="handlePointerClick($event, BuildingNameEnum.MAMAC)">
                             <circle cx="535" cy="883" r="45" fill="transparent"></circle>
-                            <circle class="pointer-shadow" [ngClass]="{'-visible': pointerFocusName === BuildingNameEnum.MAMAC }" cx="535" cy="883" r="22.5"/>
+                            <circle class="pointer-shadow" [ngClass]="{'-visible': (pointerFocusName === BuildingNameEnum.MAMAC) || (highlightedPointers.start === BuildingNameEnum.MAMAC) || (highlightedPointers.end === BuildingNameEnum.MAMAC) }" cx="535" cy="883" r="22.5"/>
                             <circle class="building-pointer" cx="535" cy="883" r="10"/>
                         </g>
                     </g>
@@ -183,15 +186,11 @@
     </div>
 </div>
 
-
-<ng-template #notRecordingTmp>
-    <ng-container  *ngIf="selectedItem$ | async as item">
-        <div class="map-overlay" (click)="clearSelection()"></div>
-        <div #pointerTooltip class="pointer-info-tooltip">
-            <span class="block text-base font-medium text-grey-08">{{ item.name }}</span>
-            <p>{{ item.description }}</p>
-        </div>
-    </ng-container>
-</ng-template>
+<ng-container  *ngIf="selectedItem$ | async as item">
+    <div #pointerTooltip class="pointer-info-tooltip">
+        <span class="block text-base font-medium text-grey-08">{{ item.name }}</span>
+        <p>{{ item.description }}</p>
+    </div>
+</ng-container>
 
 

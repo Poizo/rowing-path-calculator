@@ -4,6 +4,7 @@ import { Pointer } from '../../models/pointer.model';
 import { Stage } from '../../models/stage.model';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { StageTarget } from '../../types/stage-target.type';
 
 @Component({
   selector: 'app-encode-stage-row',
@@ -23,8 +24,9 @@ export class EncodeStageRowComponent implements  ControlValueAccessor, OnInit, O
     @Input() public stage!: Stage;
     @Input() public index!: number;
 
+    @Output() stageEmiter = new EventEmitter();
     @Output() stageDelete = new EventEmitter();
-    @Output() stepInputClick = new EventEmitter<'start' | 'end'>();
+    @Output() stepInputClick = new EventEmitter<StageTarget>();
 
     public destroyer$ = new Subject();
 
@@ -40,6 +42,8 @@ export class EncodeStageRowComponent implements  ControlValueAccessor, OnInit, O
                 this.stage.count = count ?? 1;
             }
         });
+
+
     }
 
 
@@ -52,8 +56,12 @@ export class EncodeStageRowComponent implements  ControlValueAccessor, OnInit, O
         this.stageDelete.emit();
     }
 
-    public selectStepinput(target: 'start' | 'end') {
+    public selectStepinput(target: StageTarget) {
         this.stepInputClick.emit(target);
+    }
+
+    public emitStage() {
+        this.stageEmiter.emit();
     }
 
     // ---------- ControlValueAccessor IMPLEMENTATION ----------
@@ -74,8 +82,13 @@ export class EncodeStageRowComponent implements  ControlValueAccessor, OnInit, O
         this.onChange = fn;
     }
 
-    public writeValue(value: {start: Pointer, end: Pointer}): void {
-        // Don't need it for now…
+    public writeValue(value: Stage): void {
+        if (value.start) {
+            this.startControl.setValue(value.start.name);
+        }
+        if (value.end) {
+            this.endControl.setValue(value.end.name);
+        }
     }
 
     public registerOnTouched(fn: any): void {

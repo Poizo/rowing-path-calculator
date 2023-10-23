@@ -1,5 +1,5 @@
 <div class="flex items-center justify-between " *ngIf="!!stage; else noStageTmp">
-    <span class="rounded-full text-xs text-brand-primary p-2 bg-brand-lighter mr-1">{{ index }}</span>
+    <button type="button" (click)="emitStage()" class="rounded-full text-xs text-brand-primary p-2 bg-brand-lighter mr-1">{{ index }}</button>
 
     <label [for]="'stage_start_' + stage.id" class="textfield" (click)="selectStepinput('start')">
         <input class="textfield__field" [formControl]="startControl" readonly type="text" [id]="'stage_start_' + stage.id">
