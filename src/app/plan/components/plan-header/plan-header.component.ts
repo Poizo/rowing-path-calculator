@@ -1,3 +1,4 @@
+import { DS_IconsEnum } from './../../../shared/modules/design-system/enums/ds-icons.enum';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PlanService } from '../../services/plan/plan.service';
 import { Observable, Subject } from 'rxjs';
@@ -12,6 +13,7 @@ export class PlanHeaderComponent {
 
     public isRecording$: Observable<boolean>;
     public showHelp$ = new Subject<boolean>();
+    public readonly DS_IconsEnum = DS_IconsEnum;
 
     constructor(private planService: PlanService) {
         this.isRecording$ = this.planService.isRecordingJourney$;

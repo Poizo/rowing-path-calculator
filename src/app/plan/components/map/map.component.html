@@ -23,6 +23,9 @@
                     </li>
                 </ul>
 
+                <div class="flex justify-center w-full mt-2">
+                    <button class="button --primary --action button--auto" [disabled]="!(isJourneyCalculable$ | async)" (click)="calculJourney()">{{ 'PLAN.RECORD_JOURNEY.SUBMIT' | translate }}</button>
+                </div>
             </form>
         </div>
     </div>

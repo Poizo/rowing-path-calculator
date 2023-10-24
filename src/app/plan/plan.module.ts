@@ -7,12 +7,14 @@ import { containers } from './containers';
 import { services } from './services';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DS_IconModule } from '../shared/modules/design-system/ds-icon/icon.module';
 
 @NgModule({
   imports: [
     CommonModule,
     PlanRoutingModule,
     TranslateModule,
+    DS_IconModule,
     ReactiveFormsModule
   ],
   declarations: [

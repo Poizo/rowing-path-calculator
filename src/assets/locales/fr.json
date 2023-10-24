@@ -4,7 +4,8 @@
             "TITLE": "Rowing Path Calculator!"
         },
         "RECORD_JOURNEY": {
-            "TITLE": "Encoder une sortie par étapes"
+            "TITLE": "Encoder une sortie par étapes",
+            "SUBMIT": "Calculer la distance parcourue"
         }
     }
 }

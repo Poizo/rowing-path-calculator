@@ -3,17 +3,24 @@
         {{ 'PLAN.HEADER.TITLE' | translate }}
     </h1>
     <div class="pl-3 flex items-center">
-        <button class="button" type="button" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">stop</button>
+        <button class="button" type="button" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">
+            <!-- TODO: STOP ICON -->
+            <ds-icon [icon]="DS_IconsEnum.bin" ></ds-icon>
+        </button>
 
         <ng-template #stopRecordTmp>
-            <button class="button" type="button" (click)="startARecord()">+</button>
+            <button class="button text-brand-light" type="button" (click)="startARecord()">
+                <ds-icon [icon]="DS_IconsEnum.journey" ></ds-icon>
+            </button>
         </ng-template>
 
-        <button class="button" type="button" (click)="toggleHelp()">?</button>
+        <button class="button text-brand-light" type="button" (click)="toggleHelp()">
+            <ds-icon [icon]="DS_IconsEnum.interrogation" ></ds-icon>
+        </button>
     </div>
 </header>
 
 <div *ngIf="showHelp$ | async" class="p-4 bg-grey-00 fixed top-0 left-0 right-0 h-screen w-screen z-[1000]">
-    <button class="button" type="button" (click)="toggleHelp(false)">close</button>
+    <button class="button text-brand-light" type="button" (click)="toggleHelp(false)">close</button>
     help
 </div>

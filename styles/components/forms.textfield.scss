@@ -145,7 +145,7 @@ $root: ".textfield";
         }
         &::before{
             content: '';
-            mask-image: url('~src/assets/icons/ds/search.svg');
+            // mask-image: url('~src/assets/icons/ds/search.svg');
             mask-size: 1.5rem;
             @apply absolute
                 top-1/2 -translate-y-1/2

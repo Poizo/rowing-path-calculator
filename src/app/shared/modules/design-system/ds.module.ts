@@ -1,20 +1,14 @@
-: [
-                { provide: DS_CONFIG, useValue: configToApply }
-            ]
-        };
-    }
-}
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { DS_CONFIG, DS_ConfigInterface } from './ng-afelio-ds.config';
+import { DS_CONFIG, DS_ConfigInterface } from './ds.config';
 
 @NgModule({
     declarations: [],
     imports: [],
     exports: []
 })
-export class NgAfelioDsModule {
-    public static forRoot(config: Partial<DS_ConfigInterface> = {}): ModuleWithProviders<NgAfelioDsModule> {
+export class DsModule {
+    public static forRoot(config: Partial<DS_ConfigInterface> = {}): ModuleWithProviders<DsModule> {
         const defaultConfig: DS_ConfigInterface = {
             basePageSizeOptions: [10, 20, 50],
             baseTextfieldMaxLength: 200,
@@ -25,5 +19,10 @@ export class NgAfelioDsModule {
             ...config
         }
         return {
-            ngModule: NgAfelioDsModule,
-            providers
+            ngModule: DsModule,
+            providers: [
+                { provide: DS_CONFIG, useValue: configToApply }
+            ]
+        };
+    }
+}

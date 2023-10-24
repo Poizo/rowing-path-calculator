@@ -32,6 +32,7 @@ export class MapComponent {
     public showOverlay$: Observable<boolean>;
     public selectedStageTarget$ = new BehaviorSubject<{stage: Stage, target: StageTarget} | null>(null);
     public stages: Stage[];
+    public isJourneyCalculable$ = new Subject<boolean>();
 
     constructor(private planService: PlanService, @Inject(DOCUMENT) private document: Document) {
         this.pointerFocusName = null;
@@ -66,6 +67,7 @@ export class MapComponent {
                         if (controlToSet) {
                             this.stages.find(s => s.id === selectedStageTarget.stage.id)![selectedStageTarget.target] = pointer;
                             controlToSet.setValue({...selectedStageTarget.stage, [selectedStageTarget.target]: pointer })
+                            this.isJourneyCalculable();
                         }
                     } else {
                         this.showInformationTooltip((e as PointerEvent));
@@ -90,10 +92,12 @@ export class MapComponent {
         const stage = new Stage();
         this.form.addControl(stage.id, new FormControl<Stage>(stage));
         this.stages.push(stage);
+        this.isJourneyCalculable();
     }
 
     public deleteStage(stageToDelete: Stage) {
         this.stages = this.stages.filter(stage => stageToDelete.id !== stage.id);
+        this.isJourneyCalculable();
     }
 
     public selectStepinput(stage: Stage, target: StageTarget) {
@@ -108,7 +112,24 @@ export class MapComponent {
             this.highlightedPointers.end = stage.end.name;
         }
     }
-    /******/
+
+    /**
+     * Update the boolean that determine if the submit button for calculing journey is disabled or not
+     */
+    public isJourneyCalculable() {
+        this.isJourneyCalculable$.next(this.stages.every(stage => stage.isCompleteAndCanCalculdistance()));
+    }
+
+    public calculJourney() {
+        if (this.stages.every(stage => stage.isCompleteAndCanCalculdistance())) {
+            let distanceTotal = 0;
+            this.stages.forEach(stage => {
+                distanceTotal += stage.calculDistance();
+            });
+            console.log(distanceTotal);
+        }
+    }
+    /*** RECORDING END ***/
 
     private showInformationTooltip(e: PointerEvent) {
         // settimeout because of ngif need to render the elementRef before act on it

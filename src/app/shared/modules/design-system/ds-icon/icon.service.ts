@@ -1,15 +1,3 @@
-icon]) {
-      return of(this.iconSet[icon]!);
-    } else {
-      const iconName = icon.toString().substring(5);
-      return this.http.get(`${this.globalConfig.iconBaseUrl}/${iconName}.svg`, { responseType: 'text' }).pipe(
-        map(svg => trustedHTMLFromString(svg)),
-        tap(trustedHtml => this.iconSet[icon] = trustedHtml)
-      );
-    }
-  }
-}
-
 let policy: TrustedTypePolicy | null | undefined;
 
 function getPolicy(): TrustedTypePolicy | null {
@@ -50,7 +38,7 @@ import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { DS_IconsEnum } from '../enums/ds-icons.enum';
-import { DS_CONFIG, DS_ConfigInterface } from '../ng-afelio-ds.config';
+import { DS_CONFIG, DS_ConfigInterface } from '../ds.config';
 
 @Injectable()
 export class DS_IconService {
@@ -60,4 +48,15 @@ export class DS_IconService {
   constructor(private http: HttpClient, @Inject(DS_CONFIG) private globalConfig: DS_ConfigInterface ) { }
 
   public getIcon(icon: DS_IconsEnum): Observable<TrustedHTML> {
-    if (this.iconSet[
+    if (this.iconSet[icon]) {
+        return of(this.iconSet[icon]!);
+      } else {
+        const iconName = icon.toString();
+        return this.http.get(`${this.globalConfig.iconBaseUrl}/${iconName}.svg`, { responseType: 'text' }).pipe(
+          map(svg => trustedHTMLFromString(svg)),
+          tap(trustedHtml => this.iconSet[icon] = trustedHtml)
+        );
+      }
+    }
+  }
+
