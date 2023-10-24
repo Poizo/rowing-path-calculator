@@ -6,5 +6,6 @@ export enum DS_IconsEnum {
     direction_down = 'direction_down',
     interrogation = 'interrogation',
     journey = 'journey',
+    plus = 'plus',
     position = 'position'
 }

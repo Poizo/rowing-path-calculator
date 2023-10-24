@@ -5,6 +5,7 @@ import { Stage } from '../../models/stage.model';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { StageTarget } from '../../types/stage-target.type';
+import { DS_IconsEnum } from '../../../shared/modules/design-system/enums/ds-icons.enum';
 
 @Component({
   selector: 'app-encode-stage-row',
@@ -25,10 +26,13 @@ export class EncodeStageRowComponent implements  ControlValueAccessor, OnInit, O
     @Input() public index!: number;
 
     @Output() stageEmiter = new EventEmitter();
+    @Output() stageDirectionEmiter = new EventEmitter();
     @Output() stageDelete = new EventEmitter();
     @Output() stepInputClick = new EventEmitter<StageTarget>();
 
     public destroyer$ = new Subject();
+
+    public readonly DS_IconsEnum = DS_IconsEnum;
 
     public startControl = new FormControl<string>('');
     public endControl = new FormControl<string>('');
@@ -42,8 +46,6 @@ export class EncodeStageRowComponent implements  ControlValueAccessor, OnInit, O
                 this.stage.count = count ?? 1;
             }
         });
-
-
     }
 
 
@@ -62,6 +64,10 @@ export class EncodeStageRowComponent implements  ControlValueAccessor, OnInit, O
 
     public emitStage() {
         this.stageEmiter.emit();
+    }
+
+    public changeStageDirection() {
+        this.stageDirectionEmiter.emit();
     }
 
     // ---------- ControlValueAccessor IMPLEMENTATION ----------

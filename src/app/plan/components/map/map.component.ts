@@ -9,6 +9,7 @@ import { DOCUMENT } from '@angular/common';
 import { Stage } from '../../models/stage.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { StageTarget } from '../../types/stage-target.type';
+import { DS_IconsEnum } from '../../../shared/modules/design-system/enums/ds-icons.enum';
 
 @Component({
   selector: 'app-map',
@@ -25,6 +26,7 @@ export class MapComponent {
 
     public readonly BuildingNameEnum =  BuildingNameEnum;
     public readonly BridgesNameEnum =  BridgesNameEnum;
+    public readonly DS_IconsEnum = DS_IconsEnum;
 
     public pointerFocusName: PointerName | null;
     public highlightedPointers: {start: PointerName | null, end: PointerName | null};
@@ -98,6 +100,13 @@ export class MapComponent {
     public deleteStage(stageToDelete: Stage) {
         this.stages = this.stages.filter(stage => stageToDelete.id !== stage.id);
         this.isJourneyCalculable();
+    }
+
+    public changeStageDirection(stage: Stage) {
+        const stageToUpdate = this.stages.find(s => s.id === stage.id);
+        if (stageToUpdate) {
+            stageToUpdate.isClockwise = !stageToUpdate.isClockwise;
+        }
     }
 
     public selectStepinput(stage: Stage, target: StageTarget) {

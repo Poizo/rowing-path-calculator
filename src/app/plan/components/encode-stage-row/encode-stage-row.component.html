@@ -16,7 +16,17 @@
         <input class="textfield__field" type="number" [formControl]="countControl" [id]="'stage_count_' + stage.id">
     </label>
 
-    <button (click)="deleteStage()" type="button" class="rounded-full text-xs text-danger-primary p-2 bg-danger-lighter ml-1 hover:text-danger-lighter hover:bg-danger-dark">S</button>
+
+    <button class="icon-button --small ml-1 text-action-primary hover:bg-action-lighter hover:text-action-dark" type="button" (click)="changeStageDirection()">
+        <ds-icon [icon]="DS_IconsEnum.clockwise" *ngIf="stage.isClockwise; else reverseClockwiseTmp;"></ds-icon>
+        <ng-template #reverseClockwiseTmp>
+            <ds-icon [icon]="DS_IconsEnum.reverse_clockwise" ></ds-icon>
+        </ng-template>
+    </button>
+
+    <button class="icon-button --small ml-1 text-danger-primary hover:bg-danger-lighter hover:text-danger-dark" type="button" (click)="deleteStage()">
+        <ds-icon [icon]="DS_IconsEnum.bin" ></ds-icon>
+    </button>
 </div>
 
 <ng-template #noStageTmp>

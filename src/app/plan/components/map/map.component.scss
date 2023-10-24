@@ -43,22 +43,13 @@
             &:hover, &:focus {
                 r: 20;
             }
-
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                width: 150%;
-                height: 150%;
-                background-color: red;
-            }
         }
 
         polygon,path {
             &.pointer-shadow {
                 stroke: var(--color-accent-dark);
                 stroke-linejoin: round;
-                &.-visible {
+                &.-visible, &.-marked {
                     stroke-width: 2.5rem;
                 }
             }
@@ -70,6 +61,13 @@
             &.-visible {
                 fill:  var(--color-accent-dark);
                 opacity: 0.6;
+            }
+
+            &.-marked {
+                fill:  var(--color-warning-primary);
+                stroke:  var(--color-warning-primary);
+                opacity: 0.6;
+                position: relative;
             }
         }
 
