@@ -7,5 +7,7 @@ export enum DS_IconsEnum {
     interrogation = 'interrogation',
     journey = 'journey',
     plus = 'plus',
-    position = 'position'
+    position = 'position',
+    close= 'close',
+    stop = 'stop'
 }

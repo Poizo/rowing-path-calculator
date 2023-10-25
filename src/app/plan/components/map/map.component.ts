@@ -29,7 +29,7 @@ export class MapComponent {
     public readonly DS_IconsEnum = DS_IconsEnum;
 
     public pointerFocusName: PointerName | null;
-    public highlightedPointers: {start: PointerName | null, end: PointerName | null};
+    public highlightedStage: {start: PointerName | null, end: PointerName | null, isClockwise: boolean};
     public selectedItem$ = new Subject<Pointer | null>();
     public showOverlay$: Observable<boolean>;
     public selectedStageTarget$ = new BehaviorSubject<{stage: Stage, target: StageTarget} | null>(null);
@@ -38,7 +38,7 @@ export class MapComponent {
 
     constructor(private planService: PlanService, @Inject(DOCUMENT) private document: Document) {
         this.pointerFocusName = null;
-        this.highlightedPointers = {start: null, end: null};
+        this.highlightedStage = {start: null, end: null, isClockwise: false};
         this.form = new FormGroup({});
         this.stages = [];
 
@@ -85,7 +85,7 @@ export class MapComponent {
         this.pointerFocusName = null;
         this.selectedItem$.next(null);
         this.selectedStageTarget$.next(null);
-        this.highlightedPointers = {start: null, end: null};
+        this.highlightedStage = {start: null, end: null, isClockwise: false};
     }
 
     /*** RECORDING ***/
@@ -106,6 +106,7 @@ export class MapComponent {
         const stageToUpdate = this.stages.find(s => s.id === stage.id);
         if (stageToUpdate) {
             stageToUpdate.isClockwise = !stageToUpdate.isClockwise;
+            this.showClickedStage(stageToUpdate);
         }
     }
 
@@ -113,12 +114,16 @@ export class MapComponent {
         this.selectedStageTarget$.next({stage, target});
     }
 
+
     public showClickedStage(stage: Stage) {
-        if (stage && stage.start) {
-            this.highlightedPointers.start = stage.start.name;
-        }
-        if (stage && stage.end) {
-            this.highlightedPointers.end = stage.end.name;
+        if (!!stage) {
+            this.highlightedStage.isClockwise = stage.isClockwise;
+            if (stage.start) {
+                this.highlightedStage.start = stage.start.name;
+            }
+            if (stage.end) {
+                this.highlightedStage.end = stage.end.name;
+            }
         }
     }
 

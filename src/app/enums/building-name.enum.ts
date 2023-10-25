@@ -3,5 +3,7 @@ export enum BuildingNameEnum {
     MEDIACITE = "MEDIACITE",
     RSNM = "RSNM",
     MAMAC = "MAMAC",
-    CONFLUENT = "CONFLUENT"
+    CONFLUENT = "CONFLUENT",
+    CURTIUS = "CURTIUS",
+    AQUARIUM = "AQUARIUM",
 }

@@ -4,8 +4,7 @@
     </h1>
     <div class="pl-3 flex items-center">
         <button class="icon-button text-danger-primary hover:bg-danger-lighter hover:text-danger-dark" type="button" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">
-            <!-- TODO: STOP ICON -->
-            <ds-icon [icon]="DS_IconsEnum.bin" ></ds-icon>
+            <ds-icon [icon]="DS_IconsEnum.stop" ></ds-icon>
         </button>
 
         <ng-template #stopRecordTmp>
@@ -24,7 +23,7 @@
     <button class="icon-button ml-2 text-grey-05 hover:bg-grey-02 hover:text-grey-06" type="button" (click)="toggleHelp(false)">
         <!-- TODO: CLOSE ICON -->
         <!-- TODO: And Help section -->
-        <ds-icon [icon]="DS_IconsEnum.bin" ></ds-icon>
+        <ds-icon [icon]="DS_IconsEnum.close" ></ds-icon>
     </button>
     help
 </div>

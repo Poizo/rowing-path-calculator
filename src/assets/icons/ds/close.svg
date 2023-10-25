@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 28.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 800">
 <style type="text/css">
-	.st0{fill:none;stroke:#9DFF8D;stroke-width:80;stroke-linecap:round;stroke-miterlimit:10;}
+	.icon-close{fill:none;stroke:currentColor;stroke-width:80;stroke-linecap:round;stroke-miterlimit:10;}
 </style>
-<line class="st0" x1="47" y1="47" x2="753" y2="753"/>
-<line class="st0" x1="47" y1="753" x2="753" y2="47"/>
+<line class="icon-close" x1="47" y1="47" x2="753" y2="753"/>
+<line class="icon-close" x1="47" y1="753" x2="753" y2="47"/>
 </svg>

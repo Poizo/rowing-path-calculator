@@ -45,12 +45,19 @@
             }
         }
 
-        polygon,path {
+        .pointer-clicker {
+            fill: transparent;
+        }
+
+        polygon,path, rect {
             &.pointer-shadow {
                 stroke: var(--color-accent-dark);
                 stroke-linejoin: round;
-                &.-visible, &.-marked {
+                &.-visible, &.-hilighted {
                     stroke-width: 2.5rem;
+                }
+                &.-hilighted {
+                    stroke: var(--color-warning-light);
                 }
             }
         }
@@ -62,15 +69,19 @@
                 fill:  var(--color-accent-dark);
                 opacity: 0.6;
             }
-
-            &.-marked {
-                fill:  var(--color-warning-primary);
-                stroke:  var(--color-warning-primary);
+            &.-hilighted {
+                fill:  var(--color-warning-light);
                 opacity: 0.6;
-                position: relative;
             }
         }
 
+        .pointer-direction-reverse-clockwise, .pointer-direction-clockwise {
+            opacity: 0;
+
+            &.-visible {
+                opacity: 1;
+            }
+        }
     }
 }
 
