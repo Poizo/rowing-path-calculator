@@ -28,20 +28,19 @@ export const RSNM: Pointer = {
         [BridgesNameEnum.PONT_SAUCY]: 6600,
         [BridgesNameEnum.PONT_JF_KENNEDY]: 7000,
         [BridgesNameEnum.PONT_ALBERT_1]: 7600,
-
         [BridgesNameEnum.PONT_FRAGNE]: 880,
+        [BridgesNameEnum.PONT_GRAMME]: 790,
         [BridgesNameEnum.PONT_CHEMIN_FER]: 1300,
         [BridgesNameEnum.PONT_LIEGE]: 1400,
         [BridgesNameEnum.PONT_FETINNE]: 880,
         [BridgesNameEnum.PONT_NAMUR]: 1260,
         [BridgesNameEnum.PONT_BELLE_ILE]: 1710,
-// TODO:
-        [BuildingNameEnum.CURTIUS]: 0,
-        [BuildingNameEnum.AQUARIUM]: 0,
-        [BridgesNameEnum.PONT_GRAMME]: 0,
-        [BridgesNameEnum.PONT_BIAIS]: 0,
-        [BridgesNameEnum.PONT_ATLAS]: 0,
-        [BridgesNameEnum.PONT_MAGHIN]: 0
+
+        [BuildingNameEnum.CURTIUS]: 5880,
+        [BuildingNameEnum.AQUARIUM]: 6880,
+        [BridgesNameEnum.PONT_BIAIS]: 4280,
+        [BridgesNameEnum.PONT_ATLAS]: 4475,
+        [BridgesNameEnum.PONT_MAGHIN]: 5695
     },
     distanceToClockwise: {
         [BuildingNameEnum.RSNM]: 0,
@@ -51,6 +50,7 @@ export const RSNM: Pointer = {
         [BuildingNameEnum.MEDIACITE]: 6450,
         [BridgesNameEnum.PONT_BELLE_LIEGEOISE]: 0,
         [BridgesNameEnum.PONT_FRAGNE]: 7650,
+        [BridgesNameEnum.PONT_GRAMME]: 7590,
         [BridgesNameEnum.PONT_CHEMIN_FER]: 8120,
         [BridgesNameEnum.PONT_LIEGE]: 8220,
         [BridgesNameEnum.PONT_FETINNE]: 7660,
@@ -66,13 +66,12 @@ export const RSNM: Pointer = {
         [BridgesNameEnum.PONT_SAUCY]: 1500,
         [BridgesNameEnum.PONT_JF_KENNEDY]: 1100,
         [BridgesNameEnum.PONT_ALBERT_1]: 500,
-        // TODO:
-        [BuildingNameEnum.CURTIUS]: 0,
-        [BuildingNameEnum.AQUARIUM]: 0,
-        [BridgesNameEnum.PONT_GRAMME]: 0,
-        [BridgesNameEnum.PONT_BIAIS]: 0,
-        [BridgesNameEnum.PONT_ATLAS]: 0,
-        [BridgesNameEnum.PONT_MAGHIN]: 0
+
+        [BuildingNameEnum.CURTIUS]: 2220,
+        [BuildingNameEnum.AQUARIUM]: 1220,
+        [BridgesNameEnum.PONT_BIAIS]: 3820,
+        [BridgesNameEnum.PONT_ATLAS]: 3625,
+        [BridgesNameEnum.PONT_MAGHIN]: 2405
     }
 };
 
@@ -169,6 +168,8 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                     [BuildingNameEnum.CONFLUENT]: RSNM.distanceToReverseClockwise[BuildingNameEnum.CONFLUENT]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
                     [BuildingNameEnum.MAMAC]: RSNM.distanceToReverseClockwise[BuildingNameEnum.MAMAC]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
                     [BuildingNameEnum.MEDIACITE]: RSNM.distanceToReverseClockwise[BuildingNameEnum.MEDIACITE]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
+                    [BuildingNameEnum.CURTIUS]: RSNM.distanceToReverseClockwise[BuildingNameEnum.CURTIUS]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
+
                     [BridgesNameEnum.PONT_BELLE_LIEGEOISE]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_BELLE_LIEGEOISE]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
                     [BridgesNameEnum.PONT_MATIVA]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_MATIVA]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
                     [BridgesNameEnum.PONT_PARC]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_PARC]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
@@ -180,13 +181,10 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                     [BridgesNameEnum.PONT_SAUCY]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_SAUCY]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
                     [BridgesNameEnum.PONT_JF_KENNEDY]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_JF_KENNEDY]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
                     [BridgesNameEnum.PONT_ALBERT_1]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_ALBERT_1]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
-                    // TODO:
-                    [BuildingNameEnum.CURTIUS]: 0,
-                    [BuildingNameEnum.AQUARIUM]: 0,
-                    [BridgesNameEnum.PONT_GRAMME]: 0,
-                    [BridgesNameEnum.PONT_BIAIS]: 0,
-                    [BridgesNameEnum.PONT_ATLAS]: 0,
-                    [BridgesNameEnum.PONT_MAGHIN]: 0,
+                    [BuildingNameEnum.AQUARIUM]: RSNM.distanceToReverseClockwise[BuildingNameEnum.AQUARIUM]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
+                    [BridgesNameEnum.PONT_BIAIS]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_BIAIS]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
+                    [BridgesNameEnum.PONT_ATLAS]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_ATLAS]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
+                    [BridgesNameEnum.PONT_MAGHIN]: RSNM.distanceToReverseClockwise[BridgesNameEnum.PONT_MAGHIN]  - RSNM.distanceToReverseClockwise[(key as PointerName)],
                     // set these to 0 for the moment we re-evaluate these later
                     [BridgesNameEnum.PONT_FRAGNE]: 0,
                     [BridgesNameEnum.PONT_CHEMIN_FER]: 0,
@@ -194,6 +192,7 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                     [BridgesNameEnum.PONT_BELLE_ILE]: 0,
                     [BridgesNameEnum.PONT_NAMUR]: 0,
                     [BridgesNameEnum.PONT_FETINNE]: 0,
+                    [BridgesNameEnum.PONT_GRAMME]: 0
                 };
 
                 // of course it's not all this simple…
@@ -216,6 +215,7 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                     [BuildingNameEnum.CONFLUENT]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BuildingNameEnum.CONFLUENT],
                     [BuildingNameEnum.MAMAC]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BuildingNameEnum.MAMAC],
                     [BuildingNameEnum.MEDIACITE]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BuildingNameEnum.MEDIACITE],
+                    [BuildingNameEnum.CURTIUS]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BuildingNameEnum.CURTIUS],
                     [BridgesNameEnum.PONT_BELLE_LIEGEOISE]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_BELLE_LIEGEOISE],
                     [BridgesNameEnum.PONT_MATIVA]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_MATIVA],
                     [BridgesNameEnum.PONT_PARC]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_PARC],
@@ -227,13 +227,10 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                     [BridgesNameEnum.PONT_SAUCY]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_SAUCY],
                     [BridgesNameEnum.PONT_JF_KENNEDY]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_JF_KENNEDY],
                     [BridgesNameEnum.PONT_ALBERT_1]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_ALBERT_1],
-                    // TODO:
-                    [BuildingNameEnum.CURTIUS]: 0,
-                    [BuildingNameEnum.AQUARIUM]: 0,
-                    [BridgesNameEnum.PONT_GRAMME]: 0,
-                    [BridgesNameEnum.PONT_BIAIS]: 0,
-                    [BridgesNameEnum.PONT_ATLAS]: 0,
-                    [BridgesNameEnum.PONT_MAGHIN]: 0,
+                    [BuildingNameEnum.AQUARIUM]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BuildingNameEnum.AQUARIUM],
+                    [BridgesNameEnum.PONT_BIAIS]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_BIAIS],
+                    [BridgesNameEnum.PONT_ATLAS]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_ATLAS],
+                    [BridgesNameEnum.PONT_MAGHIN]: ISLAND_TOUR - pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_MAGHIN],
                     // set these to 0 for the moment we re-evaluate these later
                     [BridgesNameEnum.PONT_FRAGNE]: 0,
                     [BridgesNameEnum.PONT_CHEMIN_FER]: 0,
@@ -241,6 +238,7 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                     [BridgesNameEnum.PONT_BELLE_ILE]: 0,
                     [BridgesNameEnum.PONT_NAMUR]: 0,
                     [BridgesNameEnum.PONT_FETINNE]: 0,
+                    [BridgesNameEnum.PONT_GRAMME]: 0
                 };
 
                 pointer.distanceToReverseClockwise[BridgesNameEnum.PONT_FRAGNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FRAGNE] + pointer.distanceToReverseClockwise[BuildingNameEnum.CONFLUENT];
@@ -273,6 +271,8 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
             [BuildingNameEnum.CONFLUENT]: all_pointers[BuildingNameEnum.CONFLUENT]!.distanceToReverseClockwise[pointerName],
             [BuildingNameEnum.MAMAC]: all_pointers[BuildingNameEnum.MAMAC]!.distanceToReverseClockwise[pointerName],
             [BuildingNameEnum.MEDIACITE]: all_pointers[BuildingNameEnum.MEDIACITE]!.distanceToReverseClockwise[pointerName],
+            [BuildingNameEnum.CURTIUS]: all_pointers[BuildingNameEnum.CURTIUS]!.distanceToReverseClockwise[pointerName],
+            [BuildingNameEnum.AQUARIUM]: all_pointers[BuildingNameEnum.AQUARIUM]!.distanceToReverseClockwise[pointerName],
             [BridgesNameEnum.PONT_BELLE_LIEGEOISE]: all_pointers[BridgesNameEnum.PONT_BELLE_LIEGEOISE]!.distanceToReverseClockwise[pointerName],
             [BridgesNameEnum.PONT_MATIVA]: all_pointers[BridgesNameEnum.PONT_MATIVA]!.distanceToReverseClockwise[pointerName],
             [BridgesNameEnum.PONT_PARC]: all_pointers[BridgesNameEnum.PONT_PARC]!.distanceToReverseClockwise[pointerName],
@@ -284,19 +284,16 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
             [BridgesNameEnum.PONT_SAUCY]: all_pointers[BridgesNameEnum.PONT_SAUCY]!.distanceToReverseClockwise[pointerName],
             [BridgesNameEnum.PONT_JF_KENNEDY]: all_pointers[BridgesNameEnum.PONT_JF_KENNEDY]!.distanceToReverseClockwise[pointerName],
             [BridgesNameEnum.PONT_ALBERT_1]: all_pointers[BridgesNameEnum.PONT_ALBERT_1]!.distanceToReverseClockwise[pointerName],
-            // TODO:
-            [BuildingNameEnum.CURTIUS]: 0,
-            [BuildingNameEnum.AQUARIUM]: 0,
-            [BridgesNameEnum.PONT_GRAMME]: 0,
-            [BridgesNameEnum.PONT_BIAIS]: 0,
-            [BridgesNameEnum.PONT_ATLAS]: 0,
-            [BridgesNameEnum.PONT_MAGHIN]: 0,
+            [BridgesNameEnum.PONT_BIAIS]: all_pointers[BridgesNameEnum.PONT_BIAIS]!.distanceToReverseClockwise[pointerName],
+            [BridgesNameEnum.PONT_ATLAS]: all_pointers[BridgesNameEnum.PONT_ATLAS]!.distanceToReverseClockwise[pointerName],
+            [BridgesNameEnum.PONT_MAGHIN]: all_pointers[BridgesNameEnum.PONT_MAGHIN]!.distanceToReverseClockwise[pointerName],
 
             // At this moment we have set the distance values for the island pointers bue we are unable to determine the distance between each non-island pointer
             // But we can set the distance to 0 if we are on the same non-island pointer. We'll set to NaN the distance that we're unable to set for now.
             [BridgesNameEnum.PONT_FRAGNE]: pointerName === BridgesNameEnum.PONT_FRAGNE ? 0 :  NaN,
             [BridgesNameEnum.PONT_CHEMIN_FER]: pointerName === BridgesNameEnum.PONT_CHEMIN_FER ? 0 :  NaN,
             [BridgesNameEnum.PONT_LIEGE]: pointerName === BridgesNameEnum.PONT_LIEGE ? 0 :  NaN,
+            [BridgesNameEnum.PONT_GRAMME]:  pointerName === BridgesNameEnum.PONT_GRAMME ? 0 :  NaN,
             [BridgesNameEnum.PONT_FETINNE]: pointerName === BridgesNameEnum.PONT_FETINNE ? 0 :  NaN,
             [BridgesNameEnum.PONT_NAMUR]: pointerName === BridgesNameEnum.PONT_NAMUR ? 0 :  NaN,
             [BridgesNameEnum.PONT_BELLE_ILE]: pointerName === BridgesNameEnum.PONT_BELLE_ILE ? 0 :  NaN,
@@ -308,6 +305,8 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
             [BuildingNameEnum.CONFLUENT]: all_pointers[BuildingNameEnum.CONFLUENT]!.distanceToClockwise[pointerName],
             [BuildingNameEnum.MAMAC]: all_pointers[BuildingNameEnum.MAMAC]!.distanceToClockwise[pointerName],
             [BuildingNameEnum.MEDIACITE]: all_pointers[BuildingNameEnum.MEDIACITE]!.distanceToClockwise[pointerName],
+            [BuildingNameEnum.CURTIUS]: all_pointers[BuildingNameEnum.CURTIUS]!.distanceToClockwise[pointerName],
+            [BuildingNameEnum.AQUARIUM]: all_pointers[BuildingNameEnum.AQUARIUM]!.distanceToClockwise[pointerName],
             [BridgesNameEnum.PONT_BELLE_LIEGEOISE]: all_pointers[BridgesNameEnum.PONT_BELLE_LIEGEOISE]!.distanceToClockwise[pointerName],
             [BridgesNameEnum.PONT_MATIVA]: all_pointers[BridgesNameEnum.PONT_MATIVA]!.distanceToClockwise[pointerName],
             [BridgesNameEnum.PONT_PARC]: all_pointers[BridgesNameEnum.PONT_PARC]!.distanceToClockwise[pointerName],
@@ -319,18 +318,15 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
             [BridgesNameEnum.PONT_SAUCY]: all_pointers[BridgesNameEnum.PONT_SAUCY]!.distanceToClockwise[pointerName],
             [BridgesNameEnum.PONT_JF_KENNEDY]: all_pointers[BridgesNameEnum.PONT_JF_KENNEDY]!.distanceToClockwise[pointerName],
             [BridgesNameEnum.PONT_ALBERT_1]: all_pointers[BridgesNameEnum.PONT_ALBERT_1]!.distanceToClockwise[pointerName],
-            // TODO:
-            [BuildingNameEnum.CURTIUS]: 0,
-            [BuildingNameEnum.AQUARIUM]: 0,
-            [BridgesNameEnum.PONT_GRAMME]: 0,
-            [BridgesNameEnum.PONT_BIAIS]: 0,
-            [BridgesNameEnum.PONT_ATLAS]: 0,
-            [BridgesNameEnum.PONT_MAGHIN]: 0,
+            [BridgesNameEnum.PONT_BIAIS]: all_pointers[BridgesNameEnum.PONT_BIAIS]!.distanceToClockwise[pointerName],
+            [BridgesNameEnum.PONT_ATLAS]: all_pointers[BridgesNameEnum.PONT_ATLAS]!.distanceToClockwise[pointerName],
+            [BridgesNameEnum.PONT_MAGHIN]: all_pointers[BridgesNameEnum.PONT_MAGHIN]!.distanceToClockwise[pointerName],
             // At this moment we have set the distance values for the island pointers bue we are unable to determine the distance between each non-island pointer
             // But we can set the distance to 0 if we are on the same non-island pointer. We'll set to NaN the distance that we're unable to set for now.
             [BridgesNameEnum.PONT_FRAGNE]: pointerName === BridgesNameEnum.PONT_FRAGNE ? 0 :  NaN,
             [BridgesNameEnum.PONT_CHEMIN_FER]: pointerName === BridgesNameEnum.PONT_CHEMIN_FER ? 0 :  NaN,
             [BridgesNameEnum.PONT_LIEGE]: pointerName === BridgesNameEnum.PONT_LIEGE ? 0 :  NaN,
+            [BridgesNameEnum.PONT_GRAMME]:  pointerName === BridgesNameEnum.PONT_GRAMME ? 0 :  NaN,
             [BridgesNameEnum.PONT_FETINNE]: pointerName === BridgesNameEnum.PONT_FETINNE ? 0 :  NaN,
             [BridgesNameEnum.PONT_NAMUR]: pointerName === BridgesNameEnum.PONT_NAMUR ? 0 :  NaN,
             [BridgesNameEnum.PONT_BELLE_ILE]: pointerName === BridgesNameEnum.PONT_BELLE_ILE ? 0 :  NaN,
@@ -347,6 +343,9 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_LIEGE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_LIEGE] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
 
                 // these three other are on the other water portion so we have to do a little math
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+
                 all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
 
@@ -365,6 +364,9 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                 all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_LIEGE] =  DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_LIEGE] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_LIEGE] =  DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_LIEGE] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
                 // these three other are on the other water portion so we have to do a little math
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+
                 all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
 
@@ -388,6 +390,9 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
                 all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
 
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+
                 all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_NAMUR] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_NAMUR];
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_NAMUR] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_NAMUR];
 
@@ -397,6 +402,9 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
 
             case BridgesNameEnum.PONT_BELLE_ILE:
                 // these two are on the same portion of water so the distance will basically juste be a straight line.
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+
                 all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
 
@@ -416,6 +424,9 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
 
             case BridgesNameEnum.PONT_NAMUR:
                 // these two are on the same portion of water so the distance will basically juste be a straight line.
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+
                 all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE];
 
@@ -435,6 +446,31 @@ export const GET_ALL_POINTERS = (): AllPointersDictionnary => {
 
             case BridgesNameEnum.PONT_FETINNE:
                 // these two are on the same portion of water so the distance will basically juste be a straight line.
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_GRAMME] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_GRAMME];
+
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_NAMUR] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_NAMUR] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_NAMUR] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_NAMUR] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
+
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_BELLE_ILE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_BELLE_ILE] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_BELLE_ILE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_BELLE_ILE] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
+
+                // these three other are on the other water portion so we have to do a little math
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_FRAGNE] =  DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FRAGNE];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_FRAGNE] =  DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FRAGNE];
+
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_CHEMIN_FER] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_CHEMIN_FER];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_CHEMIN_FER] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_CHEMIN_FER];
+
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_LIEGE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_LIEGE];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_LIEGE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName] + DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_LIEGE];
+                break;
+
+            case BridgesNameEnum.PONT_GRAMME:
+                // these two are on the same portion of water so the distance will basically juste be a straight line.
+                all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
+                all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_FETINNE] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_FETINNE] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
+
                 all_pointers[pointerName]!.distanceToClockwise[BridgesNameEnum.PONT_NAMUR] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_NAMUR] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
                 all_pointers[pointerName]!.distanceToReverseClockwise[BridgesNameEnum.PONT_NAMUR] = DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[BridgesNameEnum.PONT_NAMUR] - DISTANCE_BETWEEN_CONFLUENT_AND_NOT_ISLAND_LEVEL_POINTERS[pointerName];
 

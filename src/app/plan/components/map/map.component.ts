@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Inject, Input, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, map, merge, skip, tap } from 'rxjs';
 import { BridgesNameEnum } from '../../../enums/bridge-name.enum';
 import { BuildingNameEnum } from '../../../enums/building-name.enum';
@@ -10,6 +10,9 @@ import { Stage } from '../../models/stage.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { StageTarget } from '../../types/stage-target.type';
 import { DS_IconsEnum } from '../../../shared/modules/design-system/enums/ds-icons.enum';
+import { MatDialog } from '@angular/material/dialog';
+import { JourneyModalComponent } from '../journey-modal/journey-modal.component';
+import { Journey } from '../../models/journey.model';
 
 @Component({
   selector: 'app-map',
@@ -21,6 +24,13 @@ export class MapComponent {
 
     @ViewChild('pointerTooltip') pointerTooltip!: ElementRef<HTMLDivElement>;
 
+    @HostListener('click', ['$event.target'])
+    onClick(e: HTMLElement | SVGElement) {
+      if (e.tagName === 'APP-MAP' || e.classList.contains('map-background') || e.classList.contains('water')) {
+        this.clearSelection()
+      }
+    }
+
     public form: FormGroup<{ [k:string]: FormControl<Stage | null>; }>;
     public isRecording$: Observable<boolean>;
 
@@ -31,12 +41,11 @@ export class MapComponent {
     public pointerFocusName: PointerName | null;
     public highlightedStage: {start: PointerName | null, end: PointerName | null, isClockwise: boolean};
     public selectedItem$ = new Subject<Pointer | null>();
-    public showOverlay$: Observable<boolean>;
     public selectedStageTarget$ = new BehaviorSubject<{stage: Stage, target: StageTarget} | null>(null);
     public stages: Stage[];
     public isJourneyCalculable$ = new Subject<boolean>();
 
-    constructor(private planService: PlanService, @Inject(DOCUMENT) private document: Document) {
+    constructor(private planService: PlanService, @Inject(DOCUMENT) private document: Document, private dialog: MatDialog) {
         this.pointerFocusName = null;
         this.highlightedStage = {start: null, end: null, isClockwise: false};
         this.form = new FormGroup({});
@@ -53,7 +62,6 @@ export class MapComponent {
                 this.form.addControl(firstStage.id, firstControl);
             }
         }));
-        this.showOverlay$ = merge(this.selectedItem$, this.selectedStageTarget$).pipe(map(value => !!value));
     }
 
     public handlePointerClick(e: Event, pointerClicked: PointerName) {
@@ -136,11 +144,9 @@ export class MapComponent {
 
     public calculJourney() {
         if (this.stages.every(stage => stage.isCompleteAndCanCalculdistance())) {
-            let distanceTotal = 0;
-            this.stages.forEach(stage => {
-                distanceTotal += stage.calculDistance();
-            });
-            console.log(distanceTotal);
+            this.dialog.open(JourneyModalComponent, {
+                data: new Journey({stages: this.stages})
+              });
         }
     }
     /*** RECORDING END ***/

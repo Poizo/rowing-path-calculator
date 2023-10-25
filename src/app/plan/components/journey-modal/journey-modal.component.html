@@ -1,0 +1,15 @@
+<div class="modal --rounded" *ngIf="data">
+    <div class="py-3 px-4">
+        <div class="flex justify-center items-center w-full flex-wrap">
+            <p class="w-full text-center text-xl font-medium text-grey-08">
+                {{ 'PLAN.JOURNEY_MODAL.CONGRATULATION' | translate }}
+            </p>
+            <p class="w-full text-center text-grey-06">
+                {{ 'PLAN.JOURNEY_MODAL.YOU_HAVE_TRAVELED' | translate }}
+            </p>
+            <p class="w-full text-center text-xl font-bold text-brand-primary">
+                {{ journeyTraveled }} <span class="text-base text-grey-06">{{ ('PLAN.JOURNEY_MODAL.' + (journeyTraveled > 1 ? 'METERS' : 'METER')) | translate }}</span>
+            </p>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,12 @@
         "RECORD_JOURNEY": {
             "TITLE": "Encoder une sortie par étapes",
             "SUBMIT": "Calculer la distance parcourue"
+        },
+        "JOURNEY_MODAL": {
+            "CONGRATULATION" : "Félicitation!",
+            "YOU_HAVE_TRAVELED": "Vous avez parcourus",
+            "METER": "Mètre",
+            "METERS": "Mètres"
         }
     }
 }

@@ -8,6 +8,7 @@ import { services } from './services';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DS_IconModule } from '../shared/modules/design-system/ds-icon/icon.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { DS_IconModule } from '../shared/modules/design-system/ds-icon/icon.modu
     PlanRoutingModule,
     TranslateModule,
     DS_IconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   declarations: [
     ...components,
