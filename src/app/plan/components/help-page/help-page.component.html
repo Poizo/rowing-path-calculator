@@ -1,4 +1,4 @@
-<div class="bg-grey-00 fixed top-0 left-0 right-0 h-screen overflow-y-auto w-screen z-[1000]">
+<div class="bg-grey-00 fixed top-0 left-0 right-0 h-screen overflow-y-auto pb-6 w-screen z-[1000]">
     <div class="p-4 bg-grey-00 w-full flex justify-center">
         <button class="icon-button ml-2 text-grey-05 hover:bg-grey-02 hover:text-grey-06" type="button" (click)="closeHelp()">
             <ds-icon [icon]="DS_IconsEnum.close" ></ds-icon>
@@ -23,9 +23,9 @@
                         {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_1.APP_NAME' | translate }}
                     </span>
                     {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_1.PART_1' | translate }}
-                    <span class="f-medium text-brand-darker">
+                    <a href="https://www.rsnm.be/" target="_blank" class="f-medium text-brand-darker">
                         {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_1.CLUB_NAME' | translate }}
-                    </span>
+                    </a>
                     {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_1.PART_2' | translate }}
                 </p>
                 <p class="w-full text-sm text-grey-06 text-center pb-2">
@@ -34,8 +34,8 @@
             </div>
         </div>
 
-        <!-- HOW DOES IT WORK -->
         <div class="row pb-5">
+            <!-- HOW DOES IT WORK -->
             <div class="col-12">
                 <div class="w-full text-base text-center text-brand-dark uppercase font-medium border-b border-solid border-brand-primary pb-1 mb-3">
                     {{ 'PLAN.HELP.HOW_IT_WORK.TITLE' | translate }}
@@ -49,24 +49,158 @@
                 <p class="w-full text-sm text-grey-06 text-center pb-2">
                     {{ 'PLAN.HELP.HOW_IT_WORK.PARAGRAPH_1.PART_3' | translate }}
                 </p>
+                <!-- LEGEND -->
                 <div class="py-2 w-full">
-                    <div class="flex items-center w-full">
-                        <div class="mr-2">
-                            <svg></svg>
+                    <div class="flex items-center justify-center w-full">
+                        <div class="w-1/4 mr-2">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 800">
+                                <circle class="pointer-shadow"  [ngClass]="{'-visible': buildingPointerClicked}" cx="400" cy="400" r="283"/>
+                                <circle [attr.data-legend-building-marker]="true" class="building-pointer" cx="400" cy="400" r="200"/>
+                            </svg>
                         </div>
                         <p class="w-full text-sm text-grey-06">
                             {{ 'PLAN.HELP.HOW_IT_WORK.LEGEND.BUILDING' | translate }}
                         </p>
                     </div>
-                    <div class="flex items-center">
-                        <div class="mr-2">
-                            <svg></svg>
+                    <div class="flex items-center justify-center w-full">
+                        <div class="w-1/4 mr-2">
+                            <svg class="w-full"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
+                                <rect class="pointer-shadow"  [ngClass]="{'-visible': bridgePointerClicked}" x="44.6" y="361" transform="matrix(-0.8482 0.5297 -0.5297 -0.8482 951.1564 527.3837)" width="710.8" height="78"/>
+                                <rect [attr.data-legend-bridge-marker]="true" class="bridge-pointer" x="44.6" y="361" transform="matrix(-0.8482 0.5297 -0.5297 -0.8482 951.1564 527.3837)" width="710.8" height="78"/>
+                            </svg>
                         </div>
                         <p class="w-full text-sm text-grey-06">
                             {{ 'PLAN.HELP.HOW_IT_WORK.LEGEND.BRIDGE' | translate }}
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <!-- RECORD JOURNEY -->
+            <div class="col-12">
+                <div class="w-full text-sm text-center text-brand-dark uppercase font-medium border-b border-solid border-brand-primary pb-1 mb-3">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.TITLE' | translate }}
+                </div>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_1.PART_1' | translate }}
+                    <button class="icon-button mx-1 inline text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button">
+                        <ds-icon [icon]="DS_IconsEnum.journey" ></ds-icon>
+                    </button>
+                    {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_1.PART_2' | translate }}
+                </p>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_2.PART_1' | translate }}
+                    <button type="button" class="f-medium text-brand-darker" (click)="toggleStepExplanation(true)">
+                        {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_2.STEPS' | translate }}
+                    </button>
+                    {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_2.PART_2' | translate }}
+                </p>
+                <!-- STEP EXPLANATION -->
+                <div class="my-2 p-2 rounded bg-action-lighter relative" *ngIf="isStepExplanationShowed">
+                    <button type="button" class="icon-button --small inline text-brand-light hover:bg-brand-lighter hover:text-brand-primary absolute top-2 right-2"
+                        (click)="toggleStepExplanation()"
+                    >
+                        <ds-icon [icon]="DS_IconsEnum.close"></ds-icon>
+                    </button>
+                    <div class="text-base font-medium text-brand-dark pb-2 w-full">
+                        {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.STEP_EXPLANATION.TITLE' | translate }}
+                    </div>
+                    <p class="text-sm text-grey-06 w-full pb-2">
+                        {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.STEP_EXPLANATION.SHORT' | translate }}
+                    </p>
+                    <p class="text-sm text-grey-05 w-full">
+                        {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.STEP_EXPLANATION.DETAILED_1' | translate }}
+                    </p>
+                    <p class="text-sm text-grey-05 w-full pb-1">
+                        {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.STEP_EXPLANATION.DETAILED_2' | translate }}
+                    </p>
+                    <p class="text-sm text-grey-05 w-full">
+                        {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.STEP_EXPLANATION.DETAILED_3' | translate }}
+                    </p>
+                </div>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_2.PART_3' | translate }}
+                </p>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <!-- JOURNEY ENCODER ELEMENT BY ELEMENT -->
+            <div class="col-12">
+                <div class="w-full text-sm text-center text-brand-dark uppercase font-medium border-b border-solid border-brand-primary pb-1 mb-3">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.TITLE' | translate }}
+                </div>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.DESCRIPTION' | translate }}
+                </p>
+                <ul>
+                    <!-- JOURNEY_ENCODER HEAD -->
+                    <li class="p-2 rounded bg-action-lighter relative mb-2">
+                        <picture class="block w-full pb-2">
+                            <img class="w-full" src="./assets/journey_encoder_head.png" alt="screenshot of the journey encoder form head">
+                        </picture>
+                        <p class="text-sm text-grey-06 w-full pb-2">
+                            {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.HEAD.TITLE' | translate }}
+                        </p>
+                        <p class="text-sm text-grey-06 w-full pb-2">
+                            {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.HEAD.ADD_BUTTON.PART_1' | translate }}
+                            <button class="icon-button inline --small text-action-dark hover:bg-action-lighter hover:text-action-darker" type="button">
+                                <ds-icon [icon]="DS_IconsEnum.plus"></ds-icon>
+                            </button>.
+                            <br>
+                            {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.HEAD.ADD_BUTTON.PART_2' | translate }}
+                        </p>
+                    </li>
+                    <!-- JOURNEY_ENCODER - STEP ENCODER -->
+                    <li class="p-2 rounded bg-action-lighter relative mb-2">
+                        <picture class="block w-full pb-2">
+                            <img class="w-full" src="./assets/journey_encoder_step_encoder.png" alt="screenshot of the journey encoder form head">
+                        </picture>
+                        <!-- INDEX -->
+                        <div class="pb-2">
+                            <p class="text-sm text-grey-06 w-full pb-2">
+                                <button type="button" class="inline rounded-full text-xs text-brand-primary p-2 bg-brand-lighter mr-1">1</button>
+                                {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.INDEX.PART_1' | translate }}
+                            </p>
+                            <p class="text-sm text-grey-06 w-full pb-2">
+                                {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.INDEX.PART_2' | translate }}
+                            </p>
+                            <p class="text-sm text-grey-06 w-full pb-2">
+                                {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.INDEX.PART_3' | translate }}
+                            </p>
+                            <p class="text-sm text-grey-06 w-full">
+                                {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.INDEX.PART_4' | translate }}
+                            </p>
+                        </div>
+                        <div class="w-full px-4 pb-2">
+                            <div class="w-full border-b border-solid border-brand-lighter"></div>
+                        </div>
+                        <!-- STEP-- START -->
+                        <div class="pb-2">
+                            <div class="w-1/3">
+                                <label for="stage_start_HELP_DEMO" class="textfield">
+                                    <input class="textfield__field" [placeholder]="'PLAN.RECORD_JOURNEY.PLACEHOLDER.START' | translate" readonly type="text" id="stage_start_HELP_DEMO">
+                                </label>
+                            </div>
+                            <p class="text-sm text-grey-06 w-full py-2">
+                                {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.START.PART_1' | translate }}
+                            </p>
+                            <p class="text-sm text-grey-06 w-full py-2">
+                                {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.START.PART_2' | translate }}
+                            </p>
+                            <div class="w-1/3">
+                                <label for="stage_start_HELP_DEMO_1" class="textfield">
+                                    <input class="textfield__field" value="RSNM" readonly type="text" id="stage_start_HELP_DEMO_1">
+                                </label>
+                            </div>
+                            <p class="text-sm text-grey-06 w-full pt-2">
+                                {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.START.PART_3' | translate }}
+                            </p>
+                        </div>
+
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

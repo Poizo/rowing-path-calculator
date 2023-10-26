@@ -1,89 +1,92 @@
 .map-container {
     @apply pt-4 pb-8 w-full relative;
-
     svg {
         @apply w-full m-auto;
         max-height: 800px;
 
-        .map-background{
-            fill:var(--color-map-background);
-        }
-
-        .park{
-            fill:var(--color-park);
-        }
-
-        .water{
-            fill:var(--color-water);
-        }
-
-        .bridge-pointer{
-            fill: var(--color-bridge);
-            stroke: var(--color-bridge);
-            stroke-linejoin: round;
-
-            transition-property: stroke-width;
-            transition-duration: 250ms;
-            transition-timing-function: ease-in-out;
-
-            @apply cursor-pointer;
-            &:hover, &:focus {
-                stroke-width: 2.5rem;
-            }
-        }
-
         .building-pointer {
-            fill: var(--color-building);
-            @apply cursor-pointer relative;
-
-            transition-property: r;
-            transition-duration: 250ms;
-            transition-timing-function: ease-in-out;
-
             &:hover, &:focus {
                 r: 20;
             }
         }
+    }
+}
+svg {
 
-        .pointer-clicker {
-            fill: transparent;
+    .map-background{
+        fill:var(--color-map-background);
+    }
+
+    .park{
+        fill:var(--color-park);
+    }
+
+    .water{
+        fill:var(--color-water);
+    }
+
+    .bridge-pointer{
+        fill: var(--color-bridge);
+        stroke: var(--color-bridge);
+        stroke-linejoin: round;
+
+        transition-property: stroke-width;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+
+        @apply cursor-pointer;
+        &:hover, &:focus {
+            stroke-width: 2.5rem;
         }
+    }
 
-        polygon,path, rect {
-            &.pointer-shadow {
-                stroke: var(--color-accent-dark);
-                stroke-linejoin: round;
-                &.-visible, &.-hilighted {
-                    stroke-width: 2.5rem;
-                }
-                &.-hilighted {
-                    stroke: var(--color-warning-light);
-                }
-            }
-        }
+    .building-pointer {
+        fill: var(--color-building);
+        @apply cursor-pointer relative;
 
-        .pointer-shadow {
-            fill: transparent;
+        transition-property: r;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+    }
 
-            &.-visible {
-                fill:  var(--color-accent-dark);
-                opacity: 0.6;
+    .pointer-clicker {
+        fill: transparent;
+    }
+
+    polygon,path, rect {
+        &.pointer-shadow {
+            stroke: var(--color-accent-dark);
+            stroke-linejoin: round;
+            &.-visible, &.-hilighted {
+                stroke-width: 2.5rem;
             }
             &.-hilighted {
-                fill:  var(--color-warning-light);
-                opacity: 0.6;
+                stroke: var(--color-warning-light);
             }
         }
+    }
 
-        .pointer-direction-clockwise {
+    .pointer-shadow {
+        fill: transparent;
 
-            opacity: 0;
+        &.-visible {
+            fill:  var(--color-accent-dark);
+            opacity: 0.6;
+        }
+        &.-hilighted {
+            fill:  var(--color-warning-light);
+            opacity: 0.6;
+        }
+    }
 
-            &.-reverse {}
+    .pointer-direction-clockwise {
 
-            &.-visible {
-                opacity: 1;
-            }
+        opacity: 0;
+
+        &.-reverse {}
+
+        &.-visible {
+            opacity: 1;
         }
     }
 }

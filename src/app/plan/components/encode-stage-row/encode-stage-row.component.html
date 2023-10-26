@@ -1,14 +1,14 @@
 <div class="flex items-center justify-between " *ngIf="!!stage; else noStageTmp">
-    <button type="button" (click)="emitStage()" class="rounded-full text-xs text-brand-primary p-2 bg-brand-lighter mr-1">{{ index }}</button>
+    <button type="button" (click)="emitStage()" class="rounded-full text-xs text-brand-primary p-2 bg-brand-lighter mr-1">{{ index  + 1 }}</button>
 
     <label [for]="'stage_start_' + stage.id" class="textfield" (click)="selectStepinput('start')">
-        <input class="textfield__field" [formControl]="startControl" readonly type="text" [id]="'stage_start_' + stage.id">
+        <input class="textfield__field" [placeholder]="'PLAN.RECORD_JOURNEY.PLACEHOLDER.START' | translate" [formControl]="startControl" readonly type="text" [id]="'stage_start_' + stage.id">
     </label>
 
     <span class="text-xs text-brand-primary p-1 mx-1">-</span>
 
     <label [for]="'stage_end_' + stage.id" class="textfield" (click)="selectStepinput('end')">
-        <input class="textfield__field" [formControl]="endControl" readonly type="text" [id]="'stage_end_' + stage.id">
+        <input class="textfield__field" [placeholder]="'PLAN.RECORD_JOURNEY.PLACEHOLDER.END' | translate" [formControl]="endControl" readonly type="text" [id]="'stage_end_' + stage.id">
     </label>
 
     <label [for]="'stage_count_' + stage.id" class="textfield --small -no-arrows ml-2">

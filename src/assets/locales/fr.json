@@ -23,23 +23,72 @@
             "HOW_IT_WORK": {
                 "TITLE": "Comment ça marche?",
                 "PARAGRAPH_1": {
-                    "PART_1": "Le dessin de la carte représente la partie de la Meuse et de la dérivation entourant l'île d'Outremeuse.",
+                    "PART_1": "Le dessin de la carte représente la partie de la Meuse et de sa dérivation entourant l'île d'Outremeuse.",
                     "PART_2": "Sur cette carte on peut voir des \"marqueurs\" représentant les ponts ainsi quelques batîments notables situés au bord de l'eau.",
-                    "PART_3": "Tous ces ponts et batîments sont clicables, par défaut le click sur l'un de ces éléments l'entourera d'un halo coloré afin de marquer visuellement quel élément est sélectionné et fera également apparaître un tooltip contenant le nom du batîment/pont ciblé."
+                    "PART_3": "Tous ces ponts et batîments sont clickables, par défaut le click sur l'un de ces éléments l'entourera d'un halo coloré afin de marquer visuellement quel élément est sélectionné et fera également apparaître un tooltip contenant le nom du batîment|pont ciblé."
                 },
                 "PARAGRAPH_2": {
                     "PART_1": "Le but de cette application est de pouvoir calculer plus facilement la distance parcourue lors d'une sortie sur la meuse."
                 },
                 "LEGEND": {
                     "BUILDING": "Marqueur représentant un batîment.",
-                    "BRIDGE": "Marqueur représentant un batîment."
+                    "BRIDGE": "Marqueur représentant un pont."
+                },
+                "RECORD_JOURNEY": {
+                    "TITLE": "Calculer un parcours",
+                    "PARAGRAPH_1": {
+                        "PART_1": "Pour calculer la distance parcourues lors d'une sortie sur l'eau, il vous faudra commencer par  clicker sur cette îcone",
+                        "PART_2": "présente dans la partie supérieure droite de votre écran."
+                    },
+                    "PARAGRAPH_2": {
+                        "PART_1": "Cette action fera apparaître un formulaire qui vous permettra d'encoder les",
+                        "STEPS": " étapes ",
+                        "PART_2": "de votre sorties.",
+                        "PART_3": "Ce formulaire contient une série d'éléments qui vont nous aider à encoder correctement notre parcours, nous allons les passer en revue ci-après."
+                    },
+                    "STEP_EXPLANATION": {
+                        "TITLE": "Étape",
+                        "SHORT": "Une étape est constituée d'un point de départ, d'un point de fin et d'un sens de rotation autour de l'île d'Outremeuse",
+                        "DETAILED_1": "Les points de début et de fin d'une étape seront soit un pont soit un batiment.",
+                        "DETAILED_2": "Le sens de rotation a une importance car la distance entre un point A et un point B ne sera pas la même si l'on fait le tour de l'île ou pas!",
+                        "DETAILED_3": "Exemple: la distance dans le sens horaire entre le RSNM et le pont Albert 1er est de 500 mètres, mais si l'on change de sens et que l'on tourne dans le sens \"anti-horaire\" cela signifie que l'on va devoir faire le tour complet de l'île et la distance sera donc de 7600 mètres!"
+                    }
+                },
+                "JOURNEY_ENCODER": {
+                    "TITLE": "Formulaire d'encodage",
+                    "DESCRIPTION": "Ce formulaire peut être découper en 3 parties distinctes.",
+                    "HEAD": {
+                        "TITLE": "La partie de gauche n'est \"que\" le titre du formulaire et est donc uniquement là à des fins informatives.",
+                        "ADD_BUTTON": {
+                            "PART_1": "À droite par contre nous avons ce bouton ",
+                            "PART_2": "Ce bouton sert à ajouter une ligne d'encodage d'étape (voir ci-dessous)."
+                        }
+                    },
+                    "STEP": {
+                        "INDEX": {
+                            "PART_1": "L'index, ce numéro tout à gauche à deux fonctions:",
+                            "PART_2": "Une première informative, il vous informe du nombre d'étapes encodées.",
+                            "PART_3": "Et une deuxième plus intèressante, car il s'agit en fait d'un bouton.",
+                            "PART_4": "Si vous clickez dessus et qu'au moins un des deux points de l'étape est encodé ce(s) point(s) seront mis en avant sur la carte ainsi que des flèches indiquant le sens de rotation de l'étape."
+                        },
+                        "START": {
+                            "PART_1": "Le champs du point de départ de l'étape.",
+                            "PART_2": "Il n'est pas possible d'écrire directement dans ce champ, par contre vous pouvez le sélectionner en cliquant dessus, il vous suffira ensuite de cliquer sur un batiment ou un pont pour établir cet élément comme point de départ de votre étape.",
+                            "PART_3": "Le champs prendra automatiquement la valeur du batîment ou pont choisi."
+
+                        }
+                    }
                 }
             }
 
         },
         "RECORD_JOURNEY": {
             "TITLE": "Encoder une sortie par étapes",
-            "SUBMIT": "Calculer la distance parcourue"
+            "SUBMIT": "Calculer la distance parcourue",
+            "PLACEHOLDER": {
+                "START": "Départ",
+                "END": "Fin"
+            }
         },
         "JOURNEY_MODAL": {
             "CONGRATULATION" : "Félicitation!",
