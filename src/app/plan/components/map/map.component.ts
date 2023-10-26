@@ -138,7 +138,7 @@ export class MapComponent {
      * Update the boolean that determine if the submit button for calculing journey is disabled or not
      */
     public isJourneyCalculable() {
-        this.isJourneyCalculable$.next(this.stages.every(stage => stage.isCompleteAndCanCalculdistance()));
+        this.isJourneyCalculable$.next(this.stages && this.stages.length > 0 && this.stages.every(stage => stage.isCompleteAndCanCalculdistance()));
     }
 
     public calculJourney() {

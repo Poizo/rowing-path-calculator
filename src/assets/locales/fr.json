@@ -25,7 +25,7 @@
                 "PARAGRAPH_1": {
                     "PART_1": "Le dessin de la carte représente la partie de la Meuse et de sa dérivation entourant l'île d'Outremeuse.",
                     "PART_2": "Sur cette carte on peut voir des \"marqueurs\" représentant les ponts ainsi quelques batîments notables situés au bord de l'eau.",
-                    "PART_3": "Tous ces ponts et batîments sont clickables, par défaut le click sur l'un de ces éléments l'entourera d'un halo coloré afin de marquer visuellement quel élément est sélectionné et fera également apparaître un tooltip contenant le nom du batîment|pont ciblé."
+                    "PART_3": "Tous ces ponts et batîments sont cliquables, par défaut le click sur l'un de ces éléments l'entourera d'un halo coloré afin de marquer visuellement quel élément est sélectionné et fera également apparaître un tooltip contenant le nom du batîment|pont ciblé."
                 },
                 "PARAGRAPH_2": {
                     "PART_1": "Le but de cette application est de pouvoir calculer plus facilement la distance parcourue lors d'une sortie sur la meuse."
@@ -37,7 +37,7 @@
                 "RECORD_JOURNEY": {
                     "TITLE": "Calculer un parcours",
                     "PARAGRAPH_1": {
-                        "PART_1": "Pour calculer la distance parcourues lors d'une sortie sur l'eau, il vous faudra commencer par  clicker sur cette îcone",
+                        "PART_1": "Pour calculer la distance parcourues lors d'une sortie sur l'eau, il vous faudra commencer par  cliquer sur cette îcone",
                         "PART_2": "présente dans la partie supérieure droite de votre écran."
                     },
                     "PARAGRAPH_2": {
@@ -58,6 +58,7 @@
                     "TITLE": "Formulaire d'encodage",
                     "DESCRIPTION": "Ce formulaire peut être découper en 3 parties distinctes.",
                     "HEAD": {
+                        "NAME": "Première partie: la tête",
                         "TITLE": "La partie de gauche n'est \"que\" le titre du formulaire et est donc uniquement là à des fins informatives.",
                         "ADD_BUTTON": {
                             "PART_1": "À droite par contre nous avons ce bouton ",
@@ -65,18 +66,44 @@
                         }
                     },
                     "STEP": {
+                        "NAME": "Deuxième partie: le corps",
                         "INDEX": {
                             "PART_1": "L'index, ce numéro tout à gauche à deux fonctions:",
                             "PART_2": "Une première informative, il vous informe du nombre d'étapes encodées.",
                             "PART_3": "Et une deuxième plus intèressante, car il s'agit en fait d'un bouton.",
-                            "PART_4": "Si vous clickez dessus et qu'au moins un des deux points de l'étape est encodé ce(s) point(s) seront mis en avant sur la carte ainsi que des flèches indiquant le sens de rotation de l'étape."
+                            "PART_4": "Si vous cliquez dessus et qu'au moins un des deux points de l'étape est encodé ce(s) point(s) seront mis en avant sur la carte ainsi que des flèches indiquant le sens de rotation de l'étape."
                         },
                         "START": {
                             "PART_1": "Le champs du point de départ de l'étape.",
                             "PART_2": "Il n'est pas possible d'écrire directement dans ce champ, par contre vous pouvez le sélectionner en cliquant dessus, il vous suffira ensuite de cliquer sur un batiment ou un pont pour établir cet élément comme point de départ de votre étape.",
                             "PART_3": "Le champs prendra automatiquement la valeur du batîment ou pont choisi."
-
+                        },
+                        "END": {
+                            "PART_1": "Le champs marquant la fin de l'étape, il fonctionne exactement comme le champs précédent."
+                        },
+                        "COUNT": {
+                            "PART_1": "Le champs du nombre de passsages.",
+                            "PART_2": "Ce champs est éditable mais il n'est possible d'y entrer QUE des valeurs de nombres entiers.",
+                            "PART_3": "La valeur inscrite dans ce champs représentera le nombre de fois ou le trajet de l'étape à été effectué.",
+                            "PART_4": "Si par exemple, vous avez fait 6 aller/retour entre l'UNL et le pont du Longdoz, vous choisirez ces deux points comme début et fin, et inscrirez 12 dans ce champs."
+                        },
+                        "ROTATION": {
+                            "PART_1": "Le bouton du sens de rotation",
+                            "PART_2": "Cette îcone est en fait un bouton indiquant le sens de rotation autour de l'île dans lequel l'étape s'effectue.",
+                            "PART_3": "Cliquer sur ce bouton changera la direction de l'étape, ce changement se répercutera visuellement sur la carte par des flèches indiquant le sens de l'étape.",
+                            "PART_4": "Notez que le sens de la flèche sur l'îcone change aussi."
+                        },
+                        "DELETE": {
+                            "PART_1": "Le bouton de suppression d'étape.",
+                            "PART_2": "Cette îcone est en fait un bouton permettant de supprimer la ligne d'encodage d'étape.",
+                            "PART_3": "Autrement dit, l'action inverse du bouton '+' dans l'entête du formulaire."
                         }
+                    },
+                    "SUBMISSION": {
+                        "NAME":"Troisième partie: le pied",
+                        "PART_1": "Le bouton de soumission du formulaire.",
+                        "PART_2": "Ce bouton lorsque qu'il n'est pas désactivé, permet de lancer le calcul de la distance du parcours encoder par étape.",
+                        "PART_3": "Ce bouton n'est actif que si le formulaire d'encodage est complet et possède au moins une étape."
                     }
                 }
             }

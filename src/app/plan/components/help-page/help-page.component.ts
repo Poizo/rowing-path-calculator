@@ -25,6 +25,7 @@ export class HelpPageComponent {
     public buildingPointerClicked = false;
     public bridgePointerClicked = false;
     public isStepExplanationShowed = false;
+    public isClockwise = false;
 
     public readonly DS_IconsEnum = DS_IconsEnum;
 
@@ -34,5 +35,9 @@ export class HelpPageComponent {
 
     public toggleStepExplanation(show = false) {
         this.isStepExplanationShowed = show;
+    }
+
+    public changeDirection(){
+        this.isClockwise = !this.isClockwise;
     }
 }
