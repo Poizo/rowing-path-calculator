@@ -1,7 +1,41 @@
 {
     "PLAN": {
         "HEADER": {
-            "TITLE": "Rowing Path Calculator!"
+            "TITLE": "Rowing Path Calculator",
+            "OPEN_HELP_INFO": "Ouvrir le guide d'utilisation",
+            "START_JOURNEY_INFO": "Démarrer le calcul d'un parcours",
+            "STOP_JOURNEY_INFO": "Arreter le calcul du parcours"
+        },
+        "HELP": {
+            "TITLE": "Guide d'utilisation",
+            "PRESENTATION": {
+                "TITLE": "Présentation",
+                "PARAGRAPH_1": {
+                    "APP_NAME": "\"Rowing Path Calculator\"",
+                    "PART_1": "est une application open source créée par une avironeur du ",
+                    "CLUB_NAME": "Royale Sport Nautique de la Meuse.",
+                    "PART_2": "Elle est donc concue et réfléchie principalement pour ce club."
+                },
+                "PARAGRAPH_2": {
+                    "PART_1": "Le but de cette application est de pouvoir calculer plus facilement la distance parcourue lors d'une sortie sur la meuse."
+                }
+            },
+            "HOW_IT_WORK": {
+                "TITLE": "Comment ça marche?",
+                "PARAGRAPH_1": {
+                    "PART_1": "Le dessin de la carte représente la partie de la Meuse et de la dérivation entourant l'île d'Outremeuse.",
+                    "PART_2": "Sur cette carte on peut voir des \"marqueurs\" représentant les ponts ainsi quelques batîments notables situés au bord de l'eau.",
+                    "PART_3": "Tous ces ponts et batîments sont clicables, par défaut le click sur l'un de ces éléments l'entourera d'un halo coloré afin de marquer visuellement quel élément est sélectionné et fera également apparaître un tooltip contenant le nom du batîment/pont ciblé."
+                },
+                "PARAGRAPH_2": {
+                    "PART_1": "Le but de cette application est de pouvoir calculer plus facilement la distance parcourue lors d'une sortie sur la meuse."
+                },
+                "LEGEND": {
+                    "BUILDING": "Marqueur représentant un batîment.",
+                    "BRIDGE": "Marqueur représentant un batîment."
+                }
+            }
+
         },
         "RECORD_JOURNEY": {
             "TITLE": "Encoder une sortie par étapes",
