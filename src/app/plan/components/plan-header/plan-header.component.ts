@@ -1,12 +1,11 @@
-import { DS_IconsEnum } from './../../../shared/modules/design-system/enums/ds-icons.enum';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PlanService } from '../../services/plan/plan.service';
 import { Observable, Subject } from 'rxjs';
+import { PlanService } from '../../services/plan/plan.service';
+import { DS_IconsEnum } from './../../../shared/modules/design-system/enums/ds-icons.enum';
 
 @Component({
   selector: 'app-plan-header',
   templateUrl: './plan-header.component.html',
-  styleUrls: ['./plan-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlanHeaderComponent {

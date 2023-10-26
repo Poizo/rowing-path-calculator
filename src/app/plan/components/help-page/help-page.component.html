@@ -1,0 +1,73 @@
+<div class="bg-grey-00 fixed top-0 left-0 right-0 h-screen overflow-y-auto w-screen z-[1000]">
+    <div class="p-4 bg-grey-00 w-full flex justify-center">
+        <button class="icon-button ml-2 text-grey-05 hover:bg-grey-02 hover:text-grey-06" type="button" (click)="closeHelp()">
+            <ds-icon [icon]="DS_IconsEnum.close" ></ds-icon>
+        </button>
+    </div>
+    <div class="container">
+        <div class="row pb-8">
+            <div class="col-12">
+                <h1 class="text-lg text-center font-medium text-brand-darker">
+                    {{ 'PLAN.HELP.TITLE' | translate }}
+                </h1>
+            </div>
+        </div>
+        <!-- PRESENTATION -->
+        <div class="row pb-5">
+            <div class="col-12">
+                <div class="w-full text-base text-center text-brand-dark uppercase font-medium border-b border-solid border-brand-primary pb-1 mb-3">
+                    {{ 'PLAN.HELP.PRESENTATION.TITLE' | translate }}
+                </div>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    <span class="f-medium text-brand-darker">
+                        {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_1.APP_NAME' | translate }}
+                    </span>
+                    {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_1.PART_1' | translate }}
+                    <span class="f-medium text-brand-darker">
+                        {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_1.CLUB_NAME' | translate }}
+                    </span>
+                    {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_1.PART_2' | translate }}
+                </p>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    {{ 'PLAN.HELP.PRESENTATION.PARAGRAPH_2.PART_1' | translate }}
+                </p>
+            </div>
+        </div>
+
+        <!-- HOW DOES IT WORK -->
+        <div class="row pb-5">
+            <div class="col-12">
+                <div class="w-full text-base text-center text-brand-dark uppercase font-medium border-b border-solid border-brand-primary pb-1 mb-3">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.TITLE' | translate }}
+                </div>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.PARAGRAPH_1.PART_1' | translate }}
+                </p>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.PARAGRAPH_1.PART_2' | translate }}
+                </p>
+                <p class="w-full text-sm text-grey-06 text-center pb-2">
+                    {{ 'PLAN.HELP.HOW_IT_WORK.PARAGRAPH_1.PART_3' | translate }}
+                </p>
+                <div class="py-2 w-full">
+                    <div class="flex items-center w-full">
+                        <div class="mr-2">
+                            <svg></svg>
+                        </div>
+                        <p class="w-full text-sm text-grey-06">
+                            {{ 'PLAN.HELP.HOW_IT_WORK.LEGEND.BUILDING' | translate }}
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="mr-2">
+                            <svg></svg>
+                        </div>
+                        <p class="w-full text-sm text-grey-06">
+                            {{ 'PLAN.HELP.HOW_IT_WORK.LEGEND.BRIDGE' | translate }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

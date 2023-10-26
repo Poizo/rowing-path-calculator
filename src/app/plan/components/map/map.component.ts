@@ -1,23 +1,22 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Inject, Input, ViewChild } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, map, merge, skip, tap } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Inject, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { BehaviorSubject, Observable, Subject, skip, tap } from 'rxjs';
 import { BridgesNameEnum } from '../../../enums/bridge-name.enum';
 import { BuildingNameEnum } from '../../../enums/building-name.enum';
+import { DS_IconsEnum } from '../../../shared/modules/design-system/enums/ds-icons.enum';
+import { Journey } from '../../models/journey.model';
 import { Pointer } from '../../models/pointer.model';
+import { Stage } from '../../models/stage.model';
 import { PlanService } from '../../services/plan/plan.service';
 import { PointerName } from '../../types/pointer-name.type';
-import { DOCUMENT } from '@angular/common';
-import { Stage } from '../../models/stage.model';
-import { FormControl, FormGroup } from '@angular/forms';
 import { StageTarget } from '../../types/stage-target.type';
-import { DS_IconsEnum } from '../../../shared/modules/design-system/enums/ds-icons.enum';
-import { MatDialog } from '@angular/material/dialog';
 import { JourneyModalComponent } from '../journey-modal/journey-modal.component';
-import { Journey } from '../../models/journey.model';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapComponent {

@@ -3,27 +3,20 @@
         {{ 'PLAN.HEADER.TITLE' | translate }}
     </h1>
     <div class="pl-3 flex items-center">
-        <button class="icon-button text-danger-primary hover:bg-danger-lighter hover:text-danger-dark" type="button" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">
+        <button class="icon-button text-danger-primary hover:bg-danger-lighter hover:text-danger-dark" type="button" [title]="'STOP_JOURNEY_INFO' | translate" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">
             <ds-icon [icon]="DS_IconsEnum.stop" ></ds-icon>
         </button>
 
         <ng-template #stopRecordTmp>
-            <button class="icon-button ml-2 text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button" (click)="startARecord()">
+            <button class="icon-button ml-2 text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button" (click)="startARecord()" [title]="'START_JOURNEY_INFO' | translate">
                 <ds-icon [icon]="DS_IconsEnum.journey" ></ds-icon>
             </button>
         </ng-template>
 
-        <button class="icon-button ml-2 text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button" (click)="toggleHelp()">
+        <button class="icon-button ml-2 text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button" (click)="toggleHelp()" [title]="'OPEN_HELP_INFO' | translate">
             <ds-icon [icon]="DS_IconsEnum.interrogation" ></ds-icon>
         </button>
     </div>
 </header>
 
-<div *ngIf="showHelp$ | async" class="p-4 bg-grey-00 fixed top-0 left-0 right-0 h-screen w-screen z-[1000]">
-    <button class="icon-button ml-2 text-grey-05 hover:bg-grey-02 hover:text-grey-06" type="button" (click)="toggleHelp(false)">
-        <!-- TODO: CLOSE ICON -->
-        <!-- TODO: And Help section -->
-        <ds-icon [icon]="DS_IconsEnum.close" ></ds-icon>
-    </button>
-    help
-</div>
+<app-help-page *ngIf="showHelp$ | async" (close)="toggleHelp(false)"></app-help-page>

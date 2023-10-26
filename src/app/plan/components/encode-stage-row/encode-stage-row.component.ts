@@ -1,16 +1,14 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Pointer } from '../../models/pointer.model';
-import { Stage } from '../../models/stage.model';
-import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { StageTarget } from '../../types/stage-target.type';
+import { takeUntil } from 'rxjs/operators';
 import { DS_IconsEnum } from '../../../shared/modules/design-system/enums/ds-icons.enum';
+import { Stage } from '../../models/stage.model';
+import { StageTarget } from '../../types/stage-target.type';
 
 @Component({
   selector: 'app-encode-stage-row',
   templateUrl: './encode-stage-row.component.html',
-  styleUrls: ['./encode-stage-row.component.scss'],
   providers: [
     {
         provide: NG_VALUE_ACCESSOR,

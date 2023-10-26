@@ -18,42 +18,54 @@
     --color-park:#BDE2C8;
     --color-water:#9CC0F9;
 
-    --color-action-primary: #1166EE;
-    --color-action-dark: #0F5BD4;
-    --color-action-darker: #001639;
-    --color-action-light: #2B7DFF;
-    --color-action-lighter: #F0F6FF;
+    --color-action-lighter: #f3f6fb;
+    --color-action-light: #5893f3;
+    --color-action-primary: #2a70e0;
+    --color-action-dark: #0a377e;
+    --color-action-darker: #01122e;
 
 
-    --color-success-primary: #12B159;
-    --color-success-dark: #098F45;
-    --color-success-darker: #002D14;
-    --color-success-light: #15D169;
-    --color-success-lighter: #E6FAEF;
+    --color-success-lighter: #e0f2e8;
+    --color-success-light: #29e07b;
+    --color-success-primary: #0daa53;
+    --color-success-dark: #076b34;
+    --color-success-darker: #01200f;
 
-    --color-danger-primary: #D7191B;
-    --color-danger-dark: #BF0A0D;
-    --color-danger-darker: #650002;
-    --color-danger-light: #FF3336;
     --color-danger-lighter: #FEEFEF;
+    --color-danger-light: #f5696b;
+    --color-danger-primary: #d71316;
+    --color-danger-dark: #890608;
+    --color-danger-darker: #300001;
 
-    --color-warning-primary: #FF7900;
-    --color-warning-dark: #E66D00;
-    --color-warning-darker: #572A02;
-    --color-warning-light: #FF9B40;
-    --color-warning-lighter: #FFF4EB;
+    --color-warning-lighter: #f8f0ea;
+    --color-warning-light: #f5b274;
+    --color-warning-primary: #ff8113;
+    --color-warning-dark: #ad5304;
+    --color-warning-darker: #452101;
 
-    --color-accent-primary: #FFEE24;
-    --color-accent-dark: #F5E523;
-    --color-accent-darker: #504A01;
-    --color-accent-light: #FFF470;
     --color-accent-lighter: #FFFDEA;
+    --color-accent-light: #FFF470;
+    --color-accent-primary: #FFEE24;
+    --color-accent-dark: #aea224;
+    --color-accent-darker: #504A01;
 
-    --color-brand-primary: #002F51;
-    --color-brand-dark: #00121F;
-    --color-brand-darker: #000305;
-    --color-brand-light: #004D85;
     --color-brand-lighter: #E8F4FC;
+    --color-brand-light: #0883db;
+    --color-brand-primary: #014e85;
+    --color-brand-dark: #013d68;
+    --color-brand-darker: #000305;
+
+    --color-grey-00: #FFFFFF;
+    --color-grey-01: #f2f5f8;
+    --color-grey-02: #e7eaee;
+    --color-grey-03: #d6d9dc;
+    --color-grey-04: #afb3b7;
+    --color-grey-05: #9ba0a3;
+    --color-grey-06: #73787c;
+    --color-grey-07: #5c6166;
+    --color-grey-08: #32383e;
+    --color-grey-09: #282b2f;
+    --color-grey-10: #000000;
 }
 
 /**
@@ -71,17 +83,19 @@
 
 @import 'components/buttons';
 @import 'components/modal';
-@import 'components/tags';
+@import 'components/map';
+@import 'components/forms.textfield';
+@import 'components/overlay';
+
+// @import 'components/tags';
 // @import 'components/tables';
 
-@import 'components/page-header';
-@import 'components/page-footer';
+// @import 'components/page-header';
+// @import 'components/page-footer';
 
 // @import 'components/forms.checkbox';
-@import 'components/forms.dropdown';
+// @import 'components/forms.dropdown';
 // @import 'components/forms.datepicker';
-@import 'components/forms.fieldreadonly';
-@import 'components/forms.radio';
-@import 'components/forms.textfield';
-@import 'components/forms';
-@import 'components/overlay';
+// @import 'components/forms.fieldreadonly';
+// @import 'components/forms.radio';
+// @import 'components/forms';

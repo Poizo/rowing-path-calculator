@@ -6,7 +6,6 @@ import { Journey } from './../../models/journey.model';
 @Component({
   selector: 'app-journey-modal',
   templateUrl: './journey-modal.component.html',
-  styleUrls: ['./journey-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JourneyModalComponent {

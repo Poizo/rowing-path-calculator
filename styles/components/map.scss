@@ -75,8 +75,11 @@
             }
         }
 
-        .pointer-direction-reverse-clockwise, .pointer-direction-clockwise {
+        .pointer-direction-clockwise {
+
             opacity: 0;
+
+            &.-reverse {}
 
             &.-visible {
                 opacity: 1;
