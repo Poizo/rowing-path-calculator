@@ -88,6 +88,15 @@ svg {
         &.-visible {
             opacity: 1;
         }
+
+        .direction-arrow {
+            &.-right {
+                fill: var(--color-brand-primary);
+            }
+            &.-left {
+                fill: var(--color-brand-light);
+            }
+        }
     }
 }
 
