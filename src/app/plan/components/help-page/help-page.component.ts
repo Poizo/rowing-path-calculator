@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { DS_IconsEnum } from '../../../shared/modules/design-system/enums/ds-icons.enum';
+import { Stage } from '../../models/stage.model';
 
 @Component({
   selector: 'app-help-page',
@@ -24,8 +25,9 @@ export class HelpPageComponent {
 
     public buildingPointerClicked = false;
     public bridgePointerClicked = false;
-    public isStepExplanationShowed = false;
+    public isStepExplanationShowed = true;
     public isClockwise = false;
+    public stageHelpDemo = new Stage();
 
     public readonly DS_IconsEnum = DS_IconsEnum;
 

@@ -85,13 +85,20 @@
                 </div>
                 <p class="w-full text-sm text-grey-06 text-center pb-2">
                     {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_1.PART_1' | translate }}
-                    <button class="icon-button mx-1 inline text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button">
+                    <button class="icon-button inline text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button">
                         <ds-icon [icon]="DS_IconsEnum.journey" ></ds-icon>
                     </button>
                     {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_1.PART_2' | translate }}
                 </p>
                 <p class="w-full text-sm text-grey-06 text-center pb-2">
                     {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_2.PART_1' | translate }}
+                    <button class="icon-button inline text-danger-primary hover:bg-danger-lighter hover:text-danger-dark" type="button">
+                        <ds-icon [icon]="DS_IconsEnum.stop" ></ds-icon>
+                    </button>
+                    {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_2.PART_1_1' | translate }}
+                    <span class="w-full block text-sm text-grey-06 text-center py-2">
+                        {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_2.PART_1_2' | translate }}
+                    </span>
                     <button type="button" class="f-medium text-brand-darker" (click)="toggleStepExplanation(true)">
                         {{ 'PLAN.HELP.HOW_IT_WORK.RECORD_JOURNEY.PARAGRAPH_2.STEPS' | translate }}
                     </button>
@@ -125,8 +132,8 @@
                 </p>
             </div>
         </div>
+        <!-- JOURNEY ENCODER ELEMENT BY ELEMENT -->
         <div class="row pt-3">
-            <!-- JOURNEY ENCODER ELEMENT BY ELEMENT -->
             <div class="col-12">
                 <div class="w-full text-sm text-center text-brand-dark uppercase font-medium border-b border-solid border-brand-primary pb-1 mb-3">
                     {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.TITLE' | translate }}
@@ -141,10 +148,20 @@
                             {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.HEAD.NAME' | translate }}
                         </div>
                         <div class="p-2 rounded bg-action-lighter relative mb-2">
-                            <picture class="block w-full pb-2">
-                                <img class="w-full" src="./assets/journey_encoder_head.png" alt="screenshot of the journey encoder form head">
-                            </picture>
-                            <p class="text-sm text-grey-06 w-full pb-2">
+                            <div class="rounded-t bg-grey-00 pt-2 pb-1 px-3">
+                                <div class="flex items-center border-b border-solid border-brand-lighter pb-1 mb-2">
+                                    <div class="text-base font-medium text-grey-08 w-full">
+                                        {{ 'PLAN.RECORD_JOURNEY.TITLE' | translate }}
+                                    </div>
+                                    <button
+                                        class="icon-button --small text-action-dark hover:bg-action-lighter hover:text-action-darker"
+                                        type="button">
+                                        <ds-icon [icon]="DS_IconsEnum.plus"></ds-icon>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-grey-06 w-full pb-2 pt-1">
                                 {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.HEAD.TITLE' | translate }}
                             </p>
                             <p class="text-sm text-grey-06 w-full pb-2">
@@ -163,9 +180,12 @@
                             {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.NAME' | translate }}
                         </div>
                         <div class="p-2 rounded bg-action-lighter relative mb-2">
-                            <picture class="block w-full pb-2">
-                                <img class="w-full" src="./assets/journey_encoder_step_encoder.png" alt="screenshot of the journey encoder form head">
-                            </picture>
+
+                            <div class="px-3 py-2 bg-grey-00 mb-1">
+                                <app-encode-stage-row [stage]="stageHelpDemo" [index]="1"></app-encode-stage-row>
+                            </div>
+
+
                             <!-- INDEX -->
                             <div class="pb-2">
                                 <p class="text-sm text-grey-06 w-full pb-2">
@@ -257,7 +277,7 @@
                             <div class="w-full px-4 pb-2">
                                 <div class="w-full border-b border-solid border-brand-lighter"></div>
                             </div>
-                            <!-- COUNT -->
+                            <!-- ROTATION -->
                             <div class="pb-2">
                                 <p class="text-sm text-grey-06 w-full py-2">
                                     <button class="icon-button --small inline text-action-primary hover:bg-action-lighter hover:text-action-dark" type="button" (click)="changeDirection()">
@@ -274,8 +294,11 @@
                                 <p class="text-sm text-grey-06 w-full py-2">
                                     {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.ROTATION.PART_3' | translate }}
                                 </p>
-                                <p class="text-xs text-grey-06 w-full">
+                                <p class="text-sm font-medium text-grey-07 w-full py-2">
                                     {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.ROTATION.PART_4' | translate }}
+                                </p>
+                                <p class="text-xs text-grey-06 w-full">
+                                    {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.STEP.ROTATION.PART_5' | translate }}
                                 </p>
                             </div>
                             <!-- SEPARATOR -->
@@ -306,7 +329,7 @@
                         </div>
                         <div class="p-2 rounded bg-action-lighter relative mb-2">
                             <button class="button --primary --action button--auto">{{ 'PLAN.RECORD_JOURNEY.SUBMIT' | translate }}</button>
-                            <p class="text-sm text-grey-06 w-full pb-2">
+                            <p class="text-sm text-grey-06 w-full pb-2 pt-1">
                                 {{ 'PLAN.HELP.HOW_IT_WORK.JOURNEY_ENCODER.SUBMISSION.PART_1' | translate }}
                             </p>
                             <p class="text-sm text-grey-06 w-full pb-2">

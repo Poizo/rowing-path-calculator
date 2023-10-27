@@ -41,7 +41,9 @@
                         "PART_2": "présente dans la partie supérieure droite de votre écran."
                     },
                     "PARAGRAPH_2": {
-                        "PART_1": "Cette action fera apparaître un formulaire qui vous permettra d'encoder les",
+                        "PART_1": "Cette action aura 2 effets premièrement le bouton deviendra comme ceci ",
+                        "PART_1_1": " cliquer sur le bouton dans cet état annulera l'action précédente et remettra donc l'application dans son état initial.",
+                        "PART_1_2": "Et deuxiemement cela fera apparaître un formulaire qui vous permettra d'encoder les",
                         "STEPS": " étapes ",
                         "PART_2": "de votre sorties.",
                         "PART_3": "Ce formulaire contient une série d'éléments qui vont nous aider à encoder correctement notre parcours, nous allons les passer en revue ci-après."
@@ -91,7 +93,8 @@
                             "PART_1": "Le bouton du sens de rotation",
                             "PART_2": "Cette îcone est en fait un bouton indiquant le sens de rotation autour de l'île dans lequel l'étape s'effectue.",
                             "PART_3": "Cliquer sur ce bouton changera la direction de l'étape, ce changement se répercutera visuellement sur la carte par des flèches indiquant le sens de l'étape.",
-                            "PART_4": "Notez que le sens de la flèche sur l'îcone change aussi."
+                            "PART_4": "La direction indiquée par les flêches représente la direction du début à la fin de l'étape, elle ne signifie pas forcément qu'un tour de l'île à été fait.",
+                            "PART_5": "Notez que le sens de la flèche sur l'îcone change aussi."
                         },
                         "DELETE": {
                             "PART_1": "Le bouton de suppression d'étape.",

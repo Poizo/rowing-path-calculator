@@ -1,6 +1,7 @@
 <div class="container pt-4">
     <div class="row" *ngIf="isRecording$ | async">
         <div class="col-12">
+            <!-- JOURNEY ENCODER -->
             <form [formGroup]="form" class="w-full rounded py-2 px-3 bg-grey-00">
                 <div class="flex items-center border-b border-solid border-brand-lighter pb-1 mb-3">
                     <div class="text-base font-medium text-grey-08 w-full">
@@ -31,6 +32,7 @@
 
     <div class="row">
         <div class="col-12">
+            <!-- MAP CONTAINER -->
             <div class="map-container" [ngClass]="{'z-[15]': selectedStageTarget$ | async}">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 1415">
                     <g id="background_map">
