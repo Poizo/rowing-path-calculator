@@ -6,11 +6,13 @@ import { components } from './components';
 import { containers } from './containers';
 import { services } from './services';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    TranslateModule.forChild()
   ],
   declarations: [
     ...components,

@@ -1,4 +1,14 @@
 {
+    "DASHBOARD": {
+        "HEADER": {
+            "TITLE": "Rowing Path Calculator"
+        },
+        "LINKS": {
+            "MAP": "Carte",
+            "BOATS": "Bateaux",
+            "ROWERS": "Avironeurs"
+        }
+    },
     "PLAN": {
         "HEADER": {
             "TITLE": "Rowing Path Calculator",
