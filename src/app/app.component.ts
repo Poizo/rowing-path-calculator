@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { DS_IconsEnum } from './shared/modules/design-system/enums/ds-icons.enum';
 
 @Component({
     selector: 'app-root',
@@ -7,7 +8,10 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'rowing-path-calculator';
+
+    isBanner = true;
+
+    public readonly DS_IconsEnum =  DS_IconsEnum;
 
     constructor(
         private translate: TranslateService
@@ -18,4 +22,7 @@ export class AppComponent {
         this.translate.use('fr');
     }
 
+    closeBanner() {
+        this.isBanner = false;
+    }
 }

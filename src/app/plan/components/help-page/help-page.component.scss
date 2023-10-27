@@ -1,0 +1,9 @@
+.building-pointer {
+    &:hover {
+        r: 280;
+    }
+}
+
+button.icon-button.inline, button.button.inline {
+    display: inline;
+}

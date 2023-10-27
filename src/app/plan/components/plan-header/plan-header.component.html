@@ -1,0 +1,22 @@
+<header class="flex justify-between items-center px-4 py-2 bg-grey-00 border-b border-solid border-brand-lighter sticky top-0 left-0 right-0 shadow w-screen z-[500]">
+    <h1 class="text-lg font-medium text-brand-darker">
+        {{ 'PLAN.HEADER.TITLE' | translate }}
+    </h1>
+    <div class="pl-3 flex items-center">
+        <button class="icon-button text-danger-primary hover:bg-danger-lighter hover:text-danger-dark" type="button" [title]="'STOP_JOURNEY_INFO' | translate" (click)="stopRecord()" *ngIf="isRecording$ | async; else stopRecordTmp">
+            <ds-icon [icon]="DS_IconsEnum.stop" ></ds-icon>
+        </button>
+
+        <ng-template #stopRecordTmp>
+            <button class="icon-button ml-2 text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button" (click)="startARecord()" [title]="'START_JOURNEY_INFO' | translate">
+                <ds-icon [icon]="DS_IconsEnum.journey" ></ds-icon>
+            </button>
+        </ng-template>
+
+        <button class="icon-button ml-2 text-brand-light hover:bg-brand-lighter hover:text-brand-primary" type="button" (click)="toggleHelp()" [title]="'OPEN_HELP_INFO' | translate">
+            <ds-icon [icon]="DS_IconsEnum.interrogation" ></ds-icon>
+        </button>
+    </div>
+</header>
+
+<app-help-page *ngIf="showHelp$ | async" (close)="toggleHelp(false)"></app-help-page>

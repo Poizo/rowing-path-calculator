@@ -1,0 +1,36 @@
+<div class="flex items-center justify-between " *ngIf="!!stage; else noStageTmp">
+    <button type="button" (click)="emitStage()" class="rounded-full text-xs text-brand-primary p-2 bg-brand-lighter mr-1">{{ index  + 1 }}</button>
+
+    <label [for]="'stage_start_' + stage.id" class="textfield" (click)="selectStepinput('start')">
+        <input class="textfield__field" [placeholder]="'PLAN.RECORD_JOURNEY.PLACEHOLDER.START' | translate" [formControl]="startControl" readonly type="text" [id]="'stage_start_' + stage.id">
+    </label>
+
+    <span class="text-xs text-brand-primary p-1 mx-1">-</span>
+
+    <label [for]="'stage_end_' + stage.id" class="textfield" (click)="selectStepinput('end')">
+        <input class="textfield__field" [placeholder]="'PLAN.RECORD_JOURNEY.PLACEHOLDER.END' | translate" [formControl]="endControl" readonly type="text" [id]="'stage_end_' + stage.id">
+    </label>
+
+    <label [for]="'stage_count_' + stage.id" class="textfield --small -no-arrows ml-2">
+        <span class="textfield__suffix">x</span>
+        <input class="textfield__field" type="number" [formControl]="countControl" [id]="'stage_count_' + stage.id">
+    </label>
+
+
+    <button class="icon-button --small ml-1 text-action-primary hover:bg-action-lighter hover:text-action-dark" type="button" (click)="changeStageDirection()">
+        <ds-icon [icon]="DS_IconsEnum.clockwise" *ngIf="stage.isClockwise; else reverseClockwiseTmp;"></ds-icon>
+        <ng-template #reverseClockwiseTmp>
+            <ds-icon [icon]="DS_IconsEnum.reverse_clockwise" ></ds-icon>
+        </ng-template>
+    </button>
+
+    <button class="icon-button --small ml-1 text-danger-primary hover:bg-danger-lighter hover:text-danger-dark" type="button" (click)="deleteStage()">
+        <ds-icon [icon]="DS_IconsEnum.bin" ></ds-icon>
+    </button>
+</div>
+
+<ng-template #noStageTmp>
+    <span class="text-warning-primary">
+        ERROR -- NO STAGE!
+    </span>
+</ng-template>

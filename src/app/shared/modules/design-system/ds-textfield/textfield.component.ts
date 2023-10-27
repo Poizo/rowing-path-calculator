@@ -1,89 +1,3 @@
- void {
-        this.control.valueChanges.pipe(
-            takeUntil(this.destroyer$)
-        ).subscribe({
-            next: (value) => {
-                this.onTouched();
-                this.onChange(value);
-                this.readonlyValue$.next(value);
-            }
-        });
-    }
-
-    public ngOnChanges(changes: SimpleChanges): void {
-        this.classes$.next(this.getClasses());
-        if (changes && changes['isDisabled']) {
-            this.isDisabled ? this.control.disable() : this.control.enable();
-        }
-    }
-
-    public ngOnDestroy(): void {
-        this.destroyer$.next(null);
-        this.destroyer$.complete();
-    }
-
-    getClasses(): string[] {
-        const classes: string[] = [];
-
-        if (this.isDisabled) {
-            classes.push('-disabled');
-        }
-
-        if (this.isOnError) {
-            classes.push('-error');
-        }
-
-        if (this.isSearchInput) {
-            classes.push('-search');
-        }
-
-        if (this.customClasses && this.customClasses.length > 0) {
-            classes.push(...this.customClasses);
-        }
-
-        return classes;
-    }
-
-    public markControlAsTouch() {
-        if (this.touchedOnBlur) {
-            this.onTouched();
-        }
-    }
-
-    /**
-     *
-     * @internal
-     */
-    public onChange = (_data: string) => { };
-    /**
-     *
-     * @internal
-     */
-    public onTouched = () => { };
-
-    // ---------- ControlValueAccessor IMPLEMENTATION ----------
-
-    public registerOnChange(fn: any): void {
-        this.onChange = fn;
-    }
-
-    public writeValue(value: string): void {
-        this.control.setValue(value, {
-            emitEvent: false
-        });
-        this.readonlyValue$.next(value);
-    }
-
-    public registerOnTouched(fn: any): void {
-        this.onTouched = fn;
-    }
-
-    public setDisabledState?(isDisabled: boolean): void {
-        isDisabled ? this.control.disable() : this.control.enable();
-        this.isDisabled = isDisabled;
-    }
-
-}
 import {
     ChangeDetectionStrategy,
     Component, forwardRef, HostBinding, Input,
@@ -211,4 +125,89 @@ export class DS_TextfieldComponent implements OnInit, OnChanges, OnDestroy, Cont
         this.destroyer$ = new Subject();
     }
 
-    public ngOnInit():
+    public ngOnInit(): void {
+        this.control.valueChanges.pipe(
+            takeUntil(this.destroyer$)
+        ).subscribe({
+            next: (value) => {
+                this.onTouched();
+                this.onChange(value);
+                this.readonlyValue$.next(value);
+            }
+        });
+    }
+
+    public ngOnChanges(changes: SimpleChanges): void {
+        this.classes$.next(this.getClasses());
+        if (changes && changes['isDisabled']) {
+            this.isDisabled ? this.control.disable() : this.control.enable();
+        }
+    }
+
+    public ngOnDestroy(): void {
+        this.destroyer$.next(null);
+        this.destroyer$.complete();
+    }
+
+    getClasses(): string[] {
+        const classes: string[] = [];
+
+        if (this.isDisabled) {
+            classes.push('-disabled');
+        }
+
+        if (this.isOnError) {
+            classes.push('-error');
+        }
+
+        if (this.isSearchInput) {
+            classes.push('-search');
+        }
+
+        if (this.customClasses && this.customClasses.length > 0) {
+            classes.push(...this.customClasses);
+        }
+
+        return classes;
+    }
+
+    public markControlAsTouch() {
+        if (this.touchedOnBlur) {
+            this.onTouched();
+        }
+    }
+
+    /**
+     *
+     * @internal
+     */
+    public onChange = (_data: string) => { };
+    /**
+     *
+     * @internal
+     */
+    public onTouched = () => { };
+
+    // ---------- ControlValueAccessor IMPLEMENTATION ----------
+
+    public registerOnChange(fn: any): void {
+        this.onChange = fn;
+    }
+
+    public writeValue(value: string): void {
+        this.control.setValue(value, {
+            emitEvent: false
+        });
+        this.readonlyValue$.next(value);
+    }
+
+    public registerOnTouched(fn: any): void {
+        this.onTouched = fn;
+    }
+
+    public setDisabledState?(isDisabled: boolean): void {
+        isDisabled ? this.control.disable() : this.control.enable();
+        this.isDisabled = isDisabled;
+    }
+
+}

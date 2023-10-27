@@ -9,10 +9,14 @@ $root: ".textfield";
 
     @apply
         relative
-        flex align-middle
+        flex items-center
         w-full
         p-0
         cursor-text;
+
+    &.--small {
+        width: 150px;
+    }
 
     &__field {
         @apply
@@ -141,7 +145,7 @@ $root: ".textfield";
         }
         &::before{
             content: '';
-            mask-image: url('~src/assets/icons/ds/search.svg');
+            // mask-image: url('~src/assets/icons/ds/search.svg');
             mask-size: 1.5rem;
             @apply absolute
                 top-1/2 -translate-y-1/2
@@ -152,128 +156,3 @@ $root: ".textfield";
         }
     }
 }
-
-
-    ////////////////////////////////////////////////////
-    //
-    //                  With icon
-    //
-    ////////////////////////////////////////////////////
-/*
-    &.-pre,
-    &.-post {
-        #{$root}__icon {
-            @apply
-                absolute
-                top-1/2
-                -translate-y-1/2;
-
-            &.-pointer {
-                @apply cursor-pointer;
-            }
-        }
-
-        button#{$root}__icon {
-            @apply
-                appearance-none
-                w-auto
-                h-10
-                flex justify-center items-center
-                p-0
-                border-none
-                shadow-none
-                bg-transparent;
-
-
-            &:hover,
-            &:focus,
-            &.active {
-                @apply outline-none;
-            }
-        }
-    }
-
-    &.-pre {
-        #{$root}__field {
-            @apply pl-10;
-        }
-
-        #{$root}__icon {
-            @apply left-2;
-        }
-    }
-
-    &.-post {
-        #{$root}__field {
-            @apply pr-10;
-        }
-
-        #{$root}__icon {
-            @apply right-2;
-        }
-    }
-
-}
-
-
-    ////////////////////////////////////////////////////
-    //
-    //                  Material
-    //
-    ////////////////////////////////////////////////////
-
-    .mat-form-field.mat-form-field-type-mat-input {
-        @extend .textfield;
-
-        .mat-form-field-underline {
-            @apply hidden;
-        }
-
-        .mat-form-field-wrapper {
-            @apply w-full p-0;
-        }
-
-        .mat-form-field-flex {
-            @apply items-center w-full;
-
-            @extend .textfield__field;
-        }
-
-        &.mat-form-field-invalid .mat-form-field-flex {
-            @apply border-danger-primary;
-
-            input {
-                @apply text-danger-primary;
-            }
-        }
-
-        &.mat-form-field-disabled {
-            .mat-form-field-flex {
-                @apply bg-grey-02 border-grey-04;
-            }
-        }
-
-        .mat-form-field-infix {
-            @apply
-                static
-                border-0
-                m-0
-                p-0;
-        }
-
-        .mat-form-field-label {
-            top: 17px;
-            left: 10px;
-        }
-
-        &.mat-focused .mat-form-field-label,
-        .mat-form-field-label:not(.mat-form-field-empty) {
-            @apply hidden;
-        }
-
-        .mat-icon-button .mat-button-wrapper {
-            @apply bg-transparent;
-        }
-
-    }
-*/

@@ -20,7 +20,7 @@
         @Optional() @Inject(DS_CONFIG) globalConfig: DS_ConfigInterface
     ) {
         if (!globalConfig) {
-            throw new Error('Cannot find `DS_CONFIG`. Please add `NgAfelioDsModule.forRoot(...)` into your AppModule.')
+            throw new Error('Cannot find `DS_CONFIG`. Please add `DsModule.forRoot(...)` into your AppModule.')
         }
         this.dataSource = new SelectionModalDataSource(data.dataGetter);
         this.dataSource.changeQuery(new DataQueryModel({
@@ -146,7 +146,7 @@ import { Debounce } from '../../decorators/debounce.decorator';
 import { DS_ButtonTypeEnum, DS_IconsEnum, DS_button_icon_placement_Enum } from '../../enums/public-api';
 import { ObjectHelper } from '../../helpers/object.helper';
 import { DataQueryModel, OrderModel, PageModel } from '../../models/public-api';
-import { DS_CONFIG, DS_ConfigInterface } from '../../ng-afelio-ds.config';
+import { DS_CONFIG, DS_ConfigInterface } from '../../ds.config';
 import { ISelectModalLabels } from '../interfaces/select-modal-label.interfaces';
 import { SearchModel } from '../../../advanced-search/public-api';
 

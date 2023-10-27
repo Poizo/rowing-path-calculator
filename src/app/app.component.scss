@@ -1,0 +1,8 @@
+.footer-banner-alpha-version {
+    @apply fixed flex justify-between items-center px-4 py-1 bottom-0 left-0 right-0 w-screen z-[1000];
+    background-color: rgba(#f5b274, .5);
+
+    .text-xxs {
+        font-size: 8px;
+    }
+}

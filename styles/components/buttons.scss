@@ -17,7 +17,7 @@ $root: '.button';
 
     &:disabled,
     &--disabled {
-        @apply opacity-75 pointer-events-none;
+        @apply opacity-60 pointer-events-none;
     }
 
     /*
@@ -74,69 +74,36 @@ $root: '.button';
         }
     }
 
-    &.--link {
-        @apply
-            text-action-primary hover:text-action-dark
-            transition-colors
-            bg-none
-            p-0;
+}
+
+.icon-button {
+    @apply p-2 rounded-full w-9 h-9 flex items-center justify-center;
+
+    &.--small {
+        @apply p-1;
+        min-width: 24px;
+        width: 24px;
+        min-height: 24px;
+        height: 24px;
     }
 
-    &.--link-dark {
-        @apply
-            text-grey-10 hover:text-grey-08
-            transition-colors
-            bg-none
-            p-0;
+    &.--extra-small {
+        @apply p-1;
+        min-width: 16px;
+        width: 16px;
+        min-height: 16px;
+        height: 16px;
     }
 
-    &.--close{
-        @apply text-grey-04 hover:text-grey-06
-            w-6
-            h-6
-            p-0;
-    }
+    transition-duration: 250ms;
+    transition-property: background-color, color;
+    transition-timing-function: ease-in-out;
 
-    /*
-     * Specificities
-     */
+    ds-icon {
+        @apply block w-full;
 
-    &--icon {
-        @apply flex justify-between items-center;
-
-        svg {
-            @apply h-5 w-5;
-        }
-
-        &--only {
-            @apply p-1 w-8 h-8 justify-center;
-        }
-
-        &--pre {
-            svg {
-                @apply mr-2;
-            }
-        }
-        &--post {
-            svg {
-                @apply ml-2;
-            }
-        }
-    }
-
-    &--circle {
-        @apply rounded-full p-0 w-6 h-6 flex items-center justify-center text-sm;
-
-        svg {
-            @apply h-4 w-4;
-        }
-
-        &--small {
-            @apply w-4 h-4 text-xs;
-
-            svg {
-                @apply h-3 w-3;
-            }
+        .icon {
+            @apply w-full;
         }
     }
 }

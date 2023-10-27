@@ -5,16 +5,19 @@ export enum BridgesNameEnum {
     PONT_BELLE_ILE = "Pont de Belle-île",
     PONT_NAMUR = "Pont de Namur",
     PONT_FETINNE = "Pont de Fétinne",
+    PONT_GRAMME = "Pont Gramme",
     PONT_MATIVA = "Passerelle Mativa",
-    PONT_BELLE_LIEGEOISE = "Passerelle la Belle Liègeoise",
-    PONT_ALBERT_1 = "Pont Albert 1er",
     PONT_PARC = "Pont du parc",
     PONT_HUY = "Pont de Huy",
+    PONT_AMERCOEUR = "Pont d'Amercoeur",
+    PONT_BRESSOUX = "Pont de Bressoux",
+    PONT_BIAIS = "Pont Biais",
+    PONT_ATLAS = "Pont Atlas",
+    PONT_MAGHIN = "Pont Maghin",
+    PONT_BELLE_LIEGEOISE = "Passerelle la Belle Liègeoise",
     PONT_JF_KENNEDY = "Pont John Fitzgerald Kennedy",
+    PONT_ALBERT_1 = "Pont Albert 1er",
     PONT_LONGDOZ = "Pont du Longdoz",
     PONT_SAUCY = "Passerelle Saucy",
-    PONT_ARCHE = "Pont des Arches",
-    PONT_AMERCOEUR = "Pont d'Amercoeur",
-    PONT_BRESSOUX = "Pont de Bressoux"
-
+    PONT_ARCHE = "Pont des Arches"
 }

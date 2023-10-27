@@ -1,0 +1,7 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 800">
+<style type="text/css">
+	.icon-close{fill:none;stroke:currentColor;stroke-width:80;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<line class="icon-close" x1="47" y1="47" x2="753" y2="753"/>
+<line class="icon-close" x1="47" y1="753" x2="753" y2="47"/>
+</svg>

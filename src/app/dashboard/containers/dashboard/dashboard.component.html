@@ -1,11 +1,29 @@
+<header class="flex justify-between items-center px-4 py-2 bg-grey-00 border-b border-solid border-brand-lighter sticky top-0 left-0 right-0 shadow w-screen z-[500]">
+    <h1 class="text-lg font-medium text-brand-darker">
+        {{ 'DASHBOARD.HEADER.TITLE' | translate }}
+    </h1>
+</header>
+
 <div class="container pt-12">
     <div class="row">
         <div class="offset-2 col-4">
-            <div class="rounded shadow bg-grey-001 hover:bg-grey-002 cursor-pointer">
-                <a class="w-full block px-3 py-2" [routerLink]="['/plan']" routerLinkActive="router-link-active" >
-                    map
-                </a>
-            </div>
+            <ul>
+                <li class="rounded shadow bg-grey-00 hover:bg-grey-02 cursor-pointer mb-4">
+                    <a class="w-full text-action-primary block px-3 py-2" [routerLink]="['/plan']" routerLinkActive="router-link-active" >
+                        {{ 'DASHBOARD.LINKS.MAP' | translate }}
+                    </a>
+                </li>
+                <li class="rounded shadow bg-grey-01 hover:bg-grey-01 opacity-60 cursor-pointer mb-4">
+                    <span class="w-full text-grey-06 block px-3 py-2" >
+                        {{ 'DASHBOARD.LINKS.BOATS' | translate }}
+                    </span>
+                </li>
+                <li class="rounded shadow bg-grey-01 hover:bg-grey-01 opacity-60 cursor-pointer mb-4">
+                    <span class="w-full text-grey-06 block px-3 py-2">
+                        {{ 'DASHBOARD.LINKS.ROWERS' | translate }}
+                    </span>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

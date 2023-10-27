@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { RouterModule } from '@angular/router';
+import { DS_CONFIG } from './shared/modules/design-system/ds.config';
+import { DS_IconModule } from './shared/modules/design-system/ds-icon/icon.module';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, './assets/locales/', '.json');
@@ -29,8 +30,11 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
             },
         }),
     DashboardModule,
+    DS_IconModule
   ],
-  providers: [],
+  providers: [
+    { provide: DS_CONFIG, useValue: {iconBaseUrl: '/assets/icons/ds'} }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

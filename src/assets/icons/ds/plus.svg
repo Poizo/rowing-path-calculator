@@ -1,6 +1,8 @@
-ww.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="plus" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12" id="Path" stroke="currentColor" stroke-width="2"></line>
-        <line x1="5" y1="12" x2="19" y2="12" id="Path" stroke="currentColor" stroke-width="2" transform="transl<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://wate(12.000000, 12.000000) rotate(90.000000) translate(-12.000000, -12.000000) "></line>
-    </g>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
+<style type="text/css">
+	.icon-plus{fill:none;stroke:currentColor;stroke-width:80;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<line class="icon-plus" x1="400" y1="18" x2="400" y2="782"/>
+<line class="icon-plus" x1="782" y1="400" x2="18" y2="400"/>
 </svg>

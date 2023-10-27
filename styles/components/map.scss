@@ -1,0 +1,122 @@
+.map-container {
+    @apply pt-4 pb-8 w-full relative;
+    svg {
+        @apply w-full m-auto;
+        max-height: 800px;
+
+        .building-pointer {
+            &:hover, &:focus {
+                r: 20;
+            }
+        }
+    }
+}
+svg {
+
+    .map-background{
+        fill:var(--color-map-background);
+    }
+
+    .park{
+        fill:var(--color-park);
+    }
+
+    .water{
+        fill:var(--color-water);
+    }
+
+    .bridge-pointer{
+        fill: var(--color-bridge);
+        stroke: var(--color-bridge);
+        stroke-linejoin: round;
+
+        transition-property: stroke-width;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+
+        @apply cursor-pointer;
+        &:hover, &:focus {
+            stroke-width: 2.5rem;
+        }
+    }
+
+    .building-pointer {
+        fill: var(--color-building);
+        @apply cursor-pointer relative;
+
+        transition-property: r;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+    }
+
+    .pointer-clicker {
+        fill: transparent;
+    }
+
+    circle.pointer-clicker {
+        r:35;
+
+        @media screen and (min-width: 768px) {
+            r:25;
+        }
+    }
+
+    polygon,path, rect {
+        &.pointer-shadow {
+            stroke: var(--color-accent-dark);
+            stroke-linejoin: round;
+            &.-visible, &.-hilighted {
+                stroke-width: 2.5rem;
+            }
+            &.-hilighted {
+                stroke: var(--color-warning-light);
+            }
+        }
+    }
+
+    .pointer-shadow {
+        fill: transparent;
+
+        &.-visible {
+            fill:  var(--color-accent-dark);
+            opacity: 0.6;
+        }
+        &.-hilighted {
+            fill:  var(--color-warning-light);
+            opacity: 0.6;
+        }
+    }
+
+    .pointer-direction-clockwise {
+
+        opacity: 0;
+
+        &.-reverse {}
+
+        &.-visible {
+            opacity: 1;
+        }
+
+        .direction-arrow {
+            &.-right {
+                fill: var(--color-brand-primary);
+            }
+            &.-left {
+                fill: var(--color-brand-light);
+            }
+        }
+    }
+}
+
+.pointer-info-tooltip {
+    @apply rounded bg-grey-00 p-4 shadow-md fixed z-10;
+}
+
+
+.map-overlay {
+    @apply z-10 fixed h-screen w-screen opacity-0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
