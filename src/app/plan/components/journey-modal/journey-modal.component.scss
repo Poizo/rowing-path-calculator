@@ -1,0 +1,94 @@
+@keyframes explode {
+	from {
+        opacity: 1;
+		transform: translate3d(0, 0px, 0px);
+	}
+}
+
+@keyframes pop {
+	from {
+		opacity: 1;
+		transform: translate3d(0, 0px, 0px) rotate(0deg);
+	}
+}
+
+.drops-animation {
+    span {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        left: calc(50% - 5px);
+        position: fixed;
+
+        // HTML AND JS are commented
+        &.rotation-drop {
+            animation: pop 4s infinite ease-in;
+            background-color: var(--color-brand-light);
+
+            &.-dark {
+                background-color: var(--color-brand-primary);
+            }
+
+            @for $index from 1 through 500 {
+                &:nth-child(#{$index}) {
+                    animation-delay: (random() * -6s) + 250ms;
+                    animation-duration: random() * 4s + 2s;
+                    opacity: 0;
+                    $originX: (random() * 40vw + 20vw);
+
+                    @if ($index > 250) {
+                        @if (random() > 0.5) {
+                            transform: translate3d(random() * 50vw, 0px, 0px) rotate(250deg);
+                        } @else {
+                            transform: translate3d(random() * -50vw, 0px, 0px) rotate(-250deg);
+                        }
+                        $originX: $originX * 1;
+                    } @else {
+                        @if (random() > 0.5) {
+                            transform: translate3d(random() * 50vw, 0px, 0px) rotate(250deg);
+                        } @else {
+                            transform: translate3d(random() * -50vw, 0px, 0px) rotate(-250deg);
+                        }
+                        $originX: $originX * -1;
+                    }
+                    transform-origin: $originX 5vh;
+                }
+            }
+        }
+
+        &.explosion-drop {
+            background-color: var(--color-brand-lighter);
+            animation-delay: 0ms;
+            animation-duration: random() * 4s ;
+            animation: explode 1s ease-in;
+            opacity: 0;
+
+            &.-dark {
+                background-color: var(--color-brand-dark);
+            }
+
+            @for $indexExplosion from 1 through 200 {
+                &:nth-child(#{$indexExplosion}) {
+
+                    @if ($indexExplosion > 100) {
+                        @if ($indexExplosion > 150) {
+                            transform: translate3d(random() * 75vw, random() * -75vh, 0px);
+                        } @else {
+                            transform: translate3d(random() * 75vw, random() * 75vh, 0px);
+                        }
+                    } @else {
+                        @if ($indexExplosion > 50) {
+                            transform: translate3d(random() * -75vw, random() * 75vh, 0px);
+                        } @else {
+                            transform: translate3d(random() * -75vw, random() * -75vh, 0px);
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+    }
+}
+
