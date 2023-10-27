@@ -1,1 +1,10 @@
 <router-outlet></router-outlet>
+
+<div class="footer-banner-alpha-version" *ngIf="isBanner">
+    <div class="uppercase text-grey-06 text-xxs">
+        Cette Application est toujours en version Alpha.
+    </div>
+    <button class="icon-button --extra-small text-warning-primary hover:bg-warning-primary hover:text-warning-lighter" type="button" (click)="closeBanner()">
+        <ds-icon [icon]="DS_IconsEnum.close" ></ds-icon>
+    </button>
+</div>
