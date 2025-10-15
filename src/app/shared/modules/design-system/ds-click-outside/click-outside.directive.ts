@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Directive, ElementRef, EventEmitter, Inject, OnDestroy, Output } from '@angular/core';
+
+import { Directive, ElementRef, EventEmitter, Inject, OnDestroy, Output, DOCUMENT } from '@angular/core';
 
 @Directive({
     selector: '[dsClickOutside]',
