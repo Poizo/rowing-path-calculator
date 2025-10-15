@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^17.3.12",
     "@angular/platform-browser-dynamic": "^17.3.12",
     "@angular/router": "^17.3.12",
-    "@ng-select/ng-select": "11.0.0",
+    "@ng-select/ng-select": "13.0.0",
     "@ngneat/dirty-check-forms": "3.0.3",
     "@ngneat/until-destroy": "9.2.3",
     "@ngx-translate/core": "^14.0.0",
