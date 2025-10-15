@@ -15,7 +15,8 @@ import { Component } from '@angular/core';
                 <div data-read-only>{{ readOnly }}</div>
             </ng-template>
         </ds-repeat>
-    `
+    `,
+    standalone: false
 })
 export class MockedComponent {
     public form = new FormControl(['test 1']);

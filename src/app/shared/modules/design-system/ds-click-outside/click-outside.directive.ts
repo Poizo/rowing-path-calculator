@@ -2,7 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { Directive, ElementRef, EventEmitter, Inject, OnDestroy, Output } from '@angular/core';
 
 @Directive({
-    selector: '[dsClickOutside]'
+    selector: '[dsClickOutside]',
+    standalone: false
 })
 export class DS_ClickOutsideDirective implements OnDestroy {
 

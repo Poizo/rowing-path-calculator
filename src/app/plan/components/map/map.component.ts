@@ -15,9 +15,10 @@ import { StageTarget } from '../../types/stage-target.type';
 import { JourneyModalComponent } from '../journey-modal/journey-modal.component';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-map',
+    templateUrl: './map.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MapComponent {
 

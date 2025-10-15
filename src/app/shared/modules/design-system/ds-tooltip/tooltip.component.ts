@@ -6,7 +6,8 @@ import { DS_LabelWithParam } from '../interfaces';
 @Component({
     selector: 'ds-tooltip',
     templateUrl: './tooltip.component.html',
-    styleUrls: ['./tooltip.component.scss']
+    styleUrls: ['./tooltip.component.scss'],
+    standalone: false
 })
 export class DS_TooltipComponent implements OnInit {
 
