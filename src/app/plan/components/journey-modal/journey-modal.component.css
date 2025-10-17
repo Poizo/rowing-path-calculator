@@ -20,7 +20,6 @@
         left: calc(50% - 5px);
         position: fixed;
 
-        // HTML AND JS are commented
         &.rotation-drop {
             animation: pop 4s infinite ease-in;
             background-color: var(--color-brand-light);
@@ -29,31 +28,32 @@
                 background-color: var(--color-brand-primary);
             }
 
-            @for $index from 1 through 500 {
-                &:nth-child(#{$index}) {
-                    animation-delay: (random() * -6s) + 250ms;
-                    animation-duration: random() * 4s + 2s;
-                    opacity: 0;
-                    $originX: (random() * 40vw + 20vw);
+            animation-delay: calc(random(0s, -6s)  + 250ms);
+            animation-duration: calc(random(0s, 4s) + 2s);
+            opacity: 0;
 
-                    @if ($index > 250) {
-                        @if (random() > 0.5) {
-                            transform: translate3d(random() * 50vw, 0px, 0px) rotate(250deg);
-                        } @else {
-                            transform: translate3d(random() * -50vw, 0px, 0px) rotate(-250deg);
-                        }
-                        $originX: $originX * 1;
-                    } @else {
-                        @if (random() > 0.5) {
-                            transform: translate3d(random() * 50vw, 0px, 0px) rotate(250deg);
-                        } @else {
-                            transform: translate3d(random() * -50vw, 0px, 0px) rotate(-250deg);
-                        }
-                        $originX: $originX * -1;
-                    }
-                    transform-origin: $originX 5vh;
+            /* TODO: Recode animation drops */
+
+            /* ---originX: calc(random(0vw, 40vw) + 20vw); */
+
+            /* if ($index > 250) { */
+                /* if (random() > 0.5) {
+                    transform: translate3d(random() * 50vw, 0px, 0px) rotate(250deg);
+                } else {
+                    transform: translate3d(random() * -50vw, 0px, 0px) rotate(-250deg);
                 }
-            }
+                ---originX: var(---originX) * 1; */
+            /* } else {
+                @if (random() > 0.5) {
+                    transform: translate3d(random() * 50vw, 0px, 0px) rotate(250deg);
+                } @else {
+                    transform: translate3d(random() * -50vw, 0px, 0px) rotate(-250deg);
+                }
+                ---originX: var(---originX) * -1;
+            } */
+            /* transform-origin: var(---originX) 5vh; */
+
+
         }
 
         &.explosion-drop {
@@ -67,7 +67,9 @@
                 background-color: var(--color-brand-dark);
             }
 
-            @for $indexExplosion from 1 through 200 {
+            /* TODO: Recode animation drops */
+
+            /* @for $indexExplosion from 1 through 200 {
                 &:nth-child(#{$indexExplosion}) {
 
                     @if ($indexExplosion > 100) {
@@ -85,7 +87,7 @@
                     }
 
                 }
-            }
+            } */
 
         }
 

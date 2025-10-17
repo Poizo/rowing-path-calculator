@@ -1,3 +1,4 @@
+@use "sass:meta";
 @use '@angular/material' as mat;
 
 @include mat.elevation-classes();
@@ -7,7 +8,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../styles/main.scss';
+@include meta.load-css('../styles/main.scss');
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -7,7 +7,7 @@ import { Observable, map, take, timer } from 'rxjs';
 @Component({
     selector: 'app-journey-modal',
     templateUrl: './journey-modal.component.html',
-    styleUrls: ['./journey-modal.component.scss'],
+    styleUrls: ['./journey-modal.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false
 })
