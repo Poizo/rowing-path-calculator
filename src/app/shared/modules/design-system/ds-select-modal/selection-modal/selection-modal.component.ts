@@ -209,6 +209,7 @@ enum ButtonTypeEnum {
 @Component({
     selector: 'app-selection-modal',
     templateUrl: './selection-modal.component.html',
-    styleUrls: ['./selection-modal.component.scss']
+    styleUrls: ['./selection-modal.component.scss'],
+    standalone: false
 })
 export class DS_SelectionModalComponent

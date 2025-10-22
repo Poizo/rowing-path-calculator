@@ -31,7 +31,8 @@ import { DS_LabelWithParam } from '../interfaces';
 @Component({
     selector: 'ds-chips',
     templateUrl: './chips.component.html',
-    styleUrls: ['./chips.component.scss']
+    styleUrls: ['./chips.component.scss'],
+    standalone: false
 })
 export class DS_ChipsComponent implements OnInit {
 

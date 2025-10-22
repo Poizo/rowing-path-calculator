@@ -9,7 +9,8 @@ import { I_DS_Button_Menu_Action } from './ds-button-menu-component.interface';
     selector: 'ds-button-menu',
     templateUrl: './ds-button-menu.component.html',
     styleUrls: ['./ds-button-menu.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DS_ButtonMenuComponent<ActionIdType = string> implements OnInit {
 

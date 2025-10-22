@@ -1,4 +1,4 @@
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { DS_ButtonModule } from '../ds-button/ds-button.module';
 import { DS_ChipsComponent } from './chips.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('DS_ChipsComponent', () => {
     let component: DS_ChipsComponent;
@@ -14,13 +15,11 @@ describe('DS_ChipsComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                HttpClientTestingModule,
-                TranslateModule.forRoot(),
-                DS_ButtonModule
-            ],
-            declarations: [DS_ChipsComponent]
-        })
+    declarations: [DS_ChipsComponent],
+    imports: [TranslateModule.forRoot(),
+        DS_ButtonModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
             .compileComponents();
     }));
 

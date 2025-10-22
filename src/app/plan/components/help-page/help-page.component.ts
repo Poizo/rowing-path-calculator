@@ -3,10 +3,11 @@ import { DS_IconsEnum } from '../../../shared/modules/design-system/enums/ds-ico
 import { Stage } from '../../models/stage.model';
 
 @Component({
-  selector: 'app-help-page',
-  templateUrl: './help-page.component.html',
-  styleUrls:['./help-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-help-page',
+    templateUrl: './help-page.component.html',
+    styleUrls: ['./help-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HelpPageComponent {
 

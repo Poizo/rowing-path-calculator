@@ -23,7 +23,8 @@ import { DS_SelectionModalComponent, ISelectionModalConfig } from './selection-m
             multi: true
         }
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DS_SelectModalComponent<DataType = any> implements ControlValueAccessor {
 

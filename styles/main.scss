@@ -1,3 +1,4 @@
+@use "sass:meta";
 /**
 * CSS variables instanciation
 */
@@ -72,20 +73,20 @@
 * Base layer
 */
 
-@import 'base/template';
-@import 'base/typography';
-@import 'base/bootstrap-grid';
+@include meta.load-css('base/template');
+@include meta.load-css('base/typography');
+@include meta.load-css('base/bootstrap-grid');
 
 
 /**
  * Components layer
  */
 
-@import 'components/buttons';
-@import 'components/modal';
-@import 'components/map';
-@import 'components/forms.textfield';
-@import 'components/overlay';
+@include meta.load-css('components/buttons');
+@include meta.load-css('components/modal');
+@include meta.load-css('components/map');
+@include meta.load-css('components/forms.textfield');
+@include meta.load-css('components/overlay');
 
 // @import 'components/tags';
 // @import 'components/tables';

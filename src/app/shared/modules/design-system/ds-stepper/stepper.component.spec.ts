@@ -16,7 +16,8 @@ import { DS_StepperComponent } from './stepper.component';
         <cdk-step></cdk-step>
         <cdk-step></cdk-step>
     </ds-stepper>
-  `
+  `,
+    standalone: false
 })
 export class SummaryMockComponent extends DS_StepperComponent { }
 

@@ -7,16 +7,17 @@ import { Stage } from '../../models/stage.model';
 import { StageTarget } from '../../types/stage-target.type';
 
 @Component({
-  selector: 'app-encode-stage-row',
-  templateUrl: './encode-stage-row.component.html',
-  providers: [
-    {
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => EncodeStageRowComponent),
-        multi: true
-    }
-],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-encode-stage-row',
+    templateUrl: './encode-stage-row.component.html',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => EncodeStageRowComponent),
+            multi: true
+        }
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EncodeStageRowComponent implements  ControlValueAccessor, OnInit, OnDestroy {
 
