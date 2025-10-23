@@ -9,5 +9,6 @@ export enum DS_IconsEnum {
     plus = 'plus',
     position = 'position',
     close= 'close',
-    stop = 'stop'
+    stop = 'stop',
+    arrow_left = 'arrow_left'
 }
