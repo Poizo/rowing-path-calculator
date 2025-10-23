@@ -1,0 +1,39 @@
+@keyframes explode {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0px, 0px);
+    }
+}
+
+@keyframes pop {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0px, 0px) rotate(0deg);
+    }
+}
+
+.drops-animation {
+    span {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        left: calc(50% - 5px);
+        position: fixed;
+
+        &.explosion-drop {
+            background-color: var(--color-brand-lighter);
+            animation-delay: 0ms;
+            animation-duration: random() * 4s;
+            animation: explode 1s ease-in;
+            opacity: 0;
+
+            &.-dark {
+                background-color: var(--color-brand-dark);
+            }
+
+            transform: translate3d(random(-50vw, 50vw), random(-50vw, 50vw), random(-50vw, 50vw)) ;
+
+        }
+    }
+
+}

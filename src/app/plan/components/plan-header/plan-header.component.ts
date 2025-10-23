@@ -4,9 +4,10 @@ import { PlanService } from '../../services/plan/plan.service';
 import { DS_IconsEnum } from './../../../shared/modules/design-system/enums/ds-icons.enum';
 
 @Component({
-  selector: 'app-plan-header',
-  templateUrl: './plan-header.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-plan-header',
+    templateUrl: './plan-header.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PlanHeaderComponent {
 

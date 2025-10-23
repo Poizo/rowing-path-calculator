@@ -7,9 +7,10 @@ import { DS_IconService } from './icon.service';
  * Doc on the icon
  */
 @Component({
-  selector: 'ds-icon',
-  templateUrl: './icon.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ds-icon',
+    templateUrl: './icon.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DS_IconComponent implements OnChanges {
 

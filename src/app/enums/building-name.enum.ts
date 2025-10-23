@@ -6,4 +6,5 @@ export enum BuildingNameEnum {
     CONFLUENT = "CONFLUENT",
     CURTIUS = "CURTIUS",
     AQUARIUM = "AQUARIUM",
+    Q8_BELLE_ILE = "Q8_BELLE_ILE",
 }

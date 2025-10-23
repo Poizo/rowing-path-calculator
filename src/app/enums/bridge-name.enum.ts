@@ -2,6 +2,7 @@ export enum BridgesNameEnum {
     PONT_LIEGE = "Pont du pays de Liège",
     PONT_CHEMIN_FER = "Pont ferroviaire du Val-Benoît",
     PONT_FRAGNE = "Pont de Fragnée",
+    PONT_GROSSES_BATTES = "Pont des Grosses Battes",
     PONT_BELLE_ILE = "Pont de Belle-île",
     PONT_NAMUR = "Pont de Namur",
     PONT_FETINNE = "Pont de Fétinne",

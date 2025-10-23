@@ -12,11 +12,13 @@ export class Pointer {
         [BuildingNameEnum.CONFLUENT]: number;
         [BuildingNameEnum.CURTIUS]: number;
         [BuildingNameEnum.AQUARIUM]: number;
+        [BuildingNameEnum.Q8_BELLE_ILE]: number;
 
         [BridgesNameEnum.PONT_LIEGE]: number;
         [BridgesNameEnum.PONT_CHEMIN_FER]: number;
         [BridgesNameEnum.PONT_FRAGNE]: number;
         [BridgesNameEnum.PONT_BELLE_ILE]: number;
+        [BridgesNameEnum.PONT_GROSSES_BATTES]: number;
         [BridgesNameEnum.PONT_NAMUR]: number;
         [BridgesNameEnum.PONT_FETINNE]: number;
         [BridgesNameEnum.PONT_GRAMME]: number;
@@ -43,10 +45,12 @@ export class Pointer {
         [BuildingNameEnum.CONFLUENT]: number;
         [BuildingNameEnum.CURTIUS]: number;
         [BuildingNameEnum.AQUARIUM]: number;
+        [BuildingNameEnum.Q8_BELLE_ILE]: number;
 
         [BridgesNameEnum.PONT_LIEGE]: number;
         [BridgesNameEnum.PONT_CHEMIN_FER]: number;
         [BridgesNameEnum.PONT_FRAGNE]: number;
+        [BridgesNameEnum.PONT_GROSSES_BATTES]: number;
         [BridgesNameEnum.PONT_BELLE_ILE]: number;
         [BridgesNameEnum.PONT_NAMUR]: number;
         [BridgesNameEnum.PONT_FETINNE]: number;

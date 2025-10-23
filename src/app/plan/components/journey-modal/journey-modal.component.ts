@@ -5,10 +5,11 @@ import { Journey } from './../../models/journey.model';
 import { Observable, map, take, timer } from 'rxjs';
 
 @Component({
-  selector: 'app-journey-modal',
-  templateUrl: './journey-modal.component.html',
-  styleUrls: ['./journey-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-journey-modal',
+    templateUrl: './journey-modal.component.html',
+    styleUrls: ['./journey-modal.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class JourneyModalComponent {
     public DS_IconsEnum = DS_IconsEnum;

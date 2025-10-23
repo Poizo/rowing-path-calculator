@@ -8,7 +8,8 @@ import { DS_LabelWithParam } from '../interfaces';
 @Component({
     selector: 'ds-button',
     templateUrl: './ds-button.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 // tslint:disable-next-line: class-name
 export class DS_ButtonComponent implements OnInit {
